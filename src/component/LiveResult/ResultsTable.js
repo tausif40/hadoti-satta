@@ -2,92 +2,92 @@ import React from "react";
 
 const results = [
 	{
-		name: "SURAT MORNING BAZAR",
+		name: "HADOTI DAY",
 		number: "127-06-268",
-		startTime: "10:00 AM",
-		endTime: "11:00 AM",
-		chartName: "Surat Morning Bazar Chart",
+		startTime: "11:45 AM",
+		endTime: "12:45 PM",
+		chartName: "Hadoti day Chart",
 	},
 	{
-		name: "SHRI DAY",
+		name: "HADOTI NIGHT",
 		number: "357-52-570",
-		startTime: "12:15 PM",
-		endTime: "01:15 PM",
-		chartName: "Shri Day Chart",
+		startTime: "07:45 PM",
+		endTime: "",
+		chartName: "Hadoti night Chart",
 	},
-	{
-		name: "SRIDEVI",
-		number: "190-08-134",
-		startTime: "11:30 AM",
-		endTime: "12:30 PM",
-		chartName: "Sridevi Chart",
-		isHighlighted: true,
-	},
-	{
-		name: "MADHUR MORNING",
-		number: "890-77-368",
-		startTime: "11:40 AM",
-		endTime: "12:40 PM",
-		chartName: "Madhur Morning Chart"
-	},
-	{
-		name: "MADHURI DAY",
-		number: "300-33-300",
-		startTime: "01:30 PM",
-		endTime: "02:30 PM",
-		chartName: "Madhuri Day Chart"
-	},
-	{
-		name: "MAHARANI",
-		number: "400-42-246",
-		startTime: "12:15 PM",
-		endTime: "02:15 PM",
-		chartName: "Maharani Day Chart",
-		isHighlighted: true,
-	},
-	{
-		name: "MORNING MADHURI",
-		number: "239-40-280",
-		startTime: "11:15 PM",
-		endTime: "12:15 PM",
-		chartName: "Morning Madhuri Chart"
-	},
-	{
-		name: "SRK DAY",
-		number: "469-98-224",
-		startTime: "11:00 AM",
-		endTime: "12:00 PM",
-		chartName: "SRK Day Chart",
-	},
-	{
-		name: "DHAN DAY",
-		number: "159-54-220",
-		startTime: "11:15 AM",
-		endTime: "12:15 PM",
-		chartName: "Dhan Day Chart"
-	},
-	{
-		name: "ACHAL DAY",
-		number: "669-12-589",
-		startTime: "11:15 AM",
-		endTime: "12:15 PM",
-		chartName: "Achal Day Chart",
-		isHighlighted: true,
-	},
-	{
-		name: "KING MORNING",
-		number: "579-11-146",
-		startTime: "11:30 AM",
-		endTime: "12:30 PM",
-		chartName: "King Morning Chart"
-	},
-	{
-		name: "CHHENAI STAR",
-		number: "457-66-790",
-		startTime: "11:30 AM",
-		endTime: "12:30 PM",
-		chartName: "Chennai Star Chart"
-	},
+	// {
+	// 	name: "SRIDEVI",
+	// 	number: "190-08-134",
+	// 	startTime: "11:30 AM",
+	// 	endTime: "12:30 PM",
+	// 	chartName: "Sridevi Chart",
+	// 	isHighlighted: true,
+	// },
+	// {
+	// 	name: "MADHUR MORNING",
+	// 	number: "890-77-368",
+	// 	startTime: "11:40 AM",
+	// 	endTime: "12:40 PM",
+	// 	chartName: "Madhur Morning Chart"
+	// },
+	// {
+	// 	name: "MADHURI DAY",
+	// 	number: "300-33-300",
+	// 	startTime: "01:30 PM",
+	// 	endTime: "02:30 PM",
+	// 	chartName: "Madhuri Day Chart"
+	// },
+	// {
+	// 	name: "MAHARANI",
+	// 	number: "400-42-246",
+	// 	startTime: "12:15 PM",
+	// 	endTime: "02:15 PM",
+	// 	chartName: "Maharani Day Chart",
+	// 	isHighlighted: true,
+	// },
+	// {
+	// 	name: "MORNING MADHURI",
+	// 	number: "239-40-280",
+	// 	startTime: "11:15 PM",
+	// 	endTime: "12:15 PM",
+	// 	chartName: "Morning Madhuri Chart"
+	// },
+	// {
+	// 	name: "SRK DAY",
+	// 	number: "469-98-224",
+	// 	startTime: "11:00 AM",
+	// 	endTime: "12:00 PM",
+	// 	chartName: "SRK Day Chart",
+	// },
+	// {
+	// 	name: "DHAN DAY",
+	// 	number: "159-54-220",
+	// 	startTime: "11:15 AM",
+	// 	endTime: "12:15 PM",
+	// 	chartName: "Dhan Day Chart"
+	// },
+	// {
+	// 	name: "ACHAL DAY",
+	// 	number: "669-12-589",
+	// 	startTime: "11:15 AM",
+	// 	endTime: "12:15 PM",
+	// 	chartName: "Achal Day Chart",
+	// 	isHighlighted: true,
+	// },
+	// {
+	// 	name: "KING MORNING",
+	// 	number: "579-11-146",
+	// 	startTime: "11:30 AM",
+	// 	endTime: "12:30 PM",
+	// 	chartName: "King Morning Chart"
+	// },
+	// {
+	// 	name: "CHHENAI STAR",
+	// 	number: "457-66-790",
+	// 	startTime: "11:30 AM",
+	// 	endTime: "12:30 PM",
+	// 	chartName: "Chennai Star Chart"
+	// },
 ];
 
 const Badge = ({ children, variant = "default" }) => {
