@@ -28,9 +28,9 @@ const StarLineResult = () => {
 					<div className='bg-pink-50 pb-6'>
 						<div className="container flex gap-5 flex-col sm:flex-row">
 							{/* First Column */}
-							<table className="w-full sm:w-1/2 border-collapse border border-gray-300 bg-white mt-4 sm:mt-0">
+							<table className="w-full sm:w-1/2 border-collapse border border-gray-300 bg-white mt-4">
 								<thead>
-									<tr className='bg-red-200 sm:bg-white'>
+									<tr className='bg-red-200'>
 										<th className="border border-gray-300 px-4 py-2 text-gray-600">Time</th>
 										<th className="border border-gray-300 px-4 py-2 text-gray-600">Result</th>
 									</tr>
@@ -49,9 +49,9 @@ const StarLineResult = () => {
 								</tbody>
 							</table>
 							{/* Second Column */}
-							<table className="w-full sm:w-1/2 border-collapse border border-gray-300 bg-white">
+							<table className="w-full sm:w-1/2 border-collapse border border-gray-300 bg-white mt-4">
 								<thead>
-									<tr className='bg-red-200 sm:bg-white'>
+									<tr className='bg-red-200'>
 										<th className="border border-gray-300 px-4 py-2 text-gray-600">Time</th>
 										<th className="border border-gray-300 px-4 py-2 text-gray-600">Result</th>
 									</tr>
