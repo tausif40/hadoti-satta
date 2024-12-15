@@ -3,7 +3,7 @@ import { Bell } from 'lucide-react'
 
 function Header() {
 	return (
-		<header className="bg-gradient-to-r from-[#e95371] to-[#c013fa] text-white">
+		<header className="bg-gradient-to-r from-[#c749ba] to-[#e46808] text-white">
 			<div className="container mx-auto px-4 py-6">
 				<div className="flex flex-col items-center space-y-4 text-center">
 					<h1 className="text-3xl md:text-4xl font-bold">
