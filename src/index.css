@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap");
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "poppins", sans-serif;
+}
+
+a {
+	text-decoration: none;
+	display: inline-block;
+}
+
+ul {
+	list-style: none;
+}
+
+.container {
+	max-width: 1400px;
+	margin-inline: auto;
+	overflow: hidden;
+}
+
+@media screen and (max-width: 640px) {
+	.container {
+		padding-inline: 8px;
+	}
+}
+
+@keyframes textShine {
+	0% {
+		background-position: 0% 50%;
+	}
+	100% {
+		background-position: 100% 50%;
+	}
+}
+
+.logo-name {
+	/* padding: 2px 40px; */
+	cursor: pointer;
+	font-size: clamp(3rem, 1.5vw, 2rem);
+	font-weight: bold;
+	margin: 0px 10px;
+	background: linear-gradient(
+		to right,
+		#ef476f 20%,
+		#ffd166 30%,
+		#06d6a0 50%,
+		#118ab2 80%
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	text-fill-color: transparent;
+	background-size: 500% auto;
+	animation: textShine 6s ease-in-out infinite alternate;
+}
+
+@media (max-width: 640px) {
+	.logo-name {
+		font-size: clamp(2.2rem, 1.5vw, 3rem);
+		font-weight: 600;
+		background: linear-gradient(
+			to right,
+			#ef476f 20%,
+			#dbab3d 30%,
+			#06d6a0 50%,
+			#118ab2 80%,
+			#91b60b 100%
+		);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		text-fill-color: transparent;
+		background-size: 500% auto;
+		animation: textShine 6s ease-in-out infinite alternate;
+	}
+}
