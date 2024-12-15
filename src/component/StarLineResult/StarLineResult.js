@@ -14,44 +14,62 @@ const StarLineResult = () => {
 		{ time: '05:30 PM', result: '779-3' },
 	];
 
+	const half = Math.ceil(data.length / 2);
+	const firstHalf = data.slice(0, half);
+	const secondHalf = data.slice(half);
+
 	return (
 		<>
 			<div className='mt-8'>
-				<div className="py-4 ">
+				<div className="py-4">
 					<div className="bg-gradient-to-r from-[#e11d48] to-[#c013fa] text-white text-center py-2 font-bold text-lg">
 						STARLINE RESULT
 					</div>
 					<div className='bg-pink-50 pb-6'>
-						<table className="w-full border-collapse border border-gray-300 container bg-white">
-							<thead>
-								<tr>
-									<th className="border border-gray-300 px-4 py-2 text-gray-600">Time</th>
-									<th className="border border-gray-300 px-4 py-2 text-gray-600">Result</th>
-									<th className="border border-gray-300 px-4 py-2 text-gray-600">Time</th>
-									<th className="border border-gray-300 px-4 py-2 text-gray-600">Result</th>
-								</tr>
-							</thead>
-							<tbody>
-								{data.map((item, index) => (
-									index % 2 === 0 && (
+						<div className="container flex gap-5 flex-col sm:flex-row">
+							{/* First Column */}
+							<table className="w-full sm:w-1/2 border-collapse border border-gray-300 bg-white mt-4 sm:mt-0">
+								<thead>
+									<tr className='bg-red-200 sm:bg-white'>
+										<th className="border border-gray-300 px-4 py-2 text-gray-600">Time</th>
+										<th className="border border-gray-300 px-4 py-2 text-gray-600">Result</th>
+									</tr>
+								</thead>
+								<tbody>
+									{firstHalf.map((item, index) => (
 										<tr key={index}>
 											<td className="border border-gray-300 px-4 py-2 text-center">
-												{data[ index ]?.time}
+												{item.time}
 											</td>
 											<td className="border border-gray-300 px-4 py-2 text-center">
-												{data[ index ]?.result}
-											</td>
-											<td className="border border-gray-300 px-4 py-2 text-center">
-												{data[ index + 1 ]?.time || ''}
-											</td>
-											<td className="border border-gray-300 px-4 py-2 text-center">
-												{data[ index + 1 ]?.result || ''}
+												{item.result}
 											</td>
 										</tr>
-									)
-								))}
-							</tbody>
-						</table>
+									))}
+								</tbody>
+							</table>
+							{/* Second Column */}
+							<table className="w-full sm:w-1/2 border-collapse border border-gray-300 bg-white">
+								<thead>
+									<tr className='bg-red-200 sm:bg-white'>
+										<th className="border border-gray-300 px-4 py-2 text-gray-600">Time</th>
+										<th className="border border-gray-300 px-4 py-2 text-gray-600">Result</th>
+									</tr>
+								</thead>
+								<tbody>
+									{secondHalf.map((item, index) => (
+										<tr key={index}>
+											<td className="border border-gray-300 px-4 py-2 text-center">
+												{item.time}
+											</td>
+											<td className="border border-gray-300 px-4 py-2 text-center">
+												{item.result}
+											</td>
+										</tr>
+									))}
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>

@@ -17,7 +17,7 @@ function LiveResult() {
 	return (
 		<>
 			<div className=' border bg-yellow-50 my-8'>
-				<p className='flex justify-center items-center py-2 gap-4 bg-orange-300 text-2xl font-medium text-headingText'>
+				<p className='flex justify-center items-center py-2 gap-4 bg-orange-300 text-2xl font-medium text-red-800'>
 					<img src="/assets/img/zap.png" alt="" className='w-10' />
 					<p> Fastest Result Updates </p>
 					<img src="/assets/img/zap.png" alt="" className='w-10' />
