@@ -23,7 +23,7 @@ function Footer() {
 					<hr className="border-gray-800 " />
 
 					{/* Contact Section */}
-					<div className='py-8 '>
+					<div className='py-8 bg-[#111827] text-white'>
 						<div className="space-y-2">
 							<p className="text-sm font-semibold">Hadoti Satta</p>
 							<p className="text-xs">CONTACT (SITE ADMIN):-</p>

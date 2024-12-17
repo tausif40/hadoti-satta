@@ -24,7 +24,7 @@ export default function Faq() {
 		},
 		{
 			question: "What is Hadoti Satta ?",
-			
+
 			answer: "Madhur Hadoti Satta is a type of Hadoti Satta betting. Madhur Day is a type of game that is based on luck. Madhur Bazar is one of the best satta games that players love the most. Here you can discover Madhur Morning Chart, Golden Matka Chart, Madhur Night Chart, For Madhur Bazar as basic terms. It is one of the games that are players are playing for quickly winning the money."
 		},
 		{
@@ -32,7 +32,7 @@ export default function Faq() {
 			answer: "Madhur Bazar is a popular gambling game in India. The game is played with a deck of cards and the aim is to guess the winning card The game is popular among all age groups and is considered to be a game of skill."
 		},
 		{
-			question: "When Hadoti Satta ?`",
+			question: "When Hadoti Satta ?",
 			answer: "In general, Matka games like Hadoti Satta typically have specific timings for when the results are announced. The results for Hadoti Satta open in the afternoon 11:45 open PM to 12:45 PM."
 		},
 		{
@@ -48,22 +48,23 @@ export default function Faq() {
 
 	return (
 		<>
-			<div className=" min-h-screen bg-gradient-to-r from-[#ddd2f7] to-[#b4e7ff] pb-6 w-full border my-12">
+			<div className=" min-h-screen faqBg pb-6 w-full border my-12">
 				<div className="">
 					{/* Header */}
-					<div className="text-center py-4 bg-gradient-to-r from-blue-500 to-purple-500 mb-6">
+					<div className="text-center py-4 faqHeaderBg mb-6">
 						<h1 className="text-xl font-semibold tracking-tighter flex flex-col items-center justify-center text-white">
 							<p>Game Information & Rules</p>
 						</h1 >
 					</div>
 
 					<div className="max-w-7xl mx-auto">
-						<div className="space-y-4">
+						<div className="space-y-2">
 							{faqs.map((faq, index) => (
 								<div
 									key={index}
-									className="bg-white shadow-lg rounded-lg p-8 border border-gray-200 hover:scale-105 transform transition-transform duration-300"
+									className="bg-white/40 shadow-sm rounded-lg p-8 border border-gray-200 hover:bg-white/60"
 								>
+									{/* hover:scale-105 transform transition-transform duration-300 */}
 									<h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
 										<span className="inline-block bg-purple-500 text-white rounded-full px-3 py-1 text-sm font-semibold mr-4">Q</span>
 										{faq.question}

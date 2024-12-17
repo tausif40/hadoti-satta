@@ -13,7 +13,7 @@ function App() {
       <TopNav />
       <Header />
       <FastResult />
-      <ResultsTable />
+      {/* <ResultsTable /> */}
       <StarLineResult />
       <Faq />
       <Footer />

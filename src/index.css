@@ -12,6 +12,16 @@
 
 body {
 	font-family: "poppins", sans-serif;
+	/* background-color: #b4f4f9; */
+	/* background: rgb(255, 190, 11);	
+	background: linear-gradient(
+		145deg,
+		rgba(255, 190, 11, 0.356) 5%,
+		rgba(251, 84, 7, 0.267) 21%,
+		rgba(244, 38, 127, 0.359) 46%,
+		rgba(131, 56, 236, 0.341) 80%,
+		rgba(58, 133, 255, 0.274) 99%
+	); */
 }
 
 a {
@@ -84,4 +94,87 @@ ul {
 		background-size: 500% auto;
 		animation: textShine 6s ease-in-out infinite alternate;
 	}
+}
+.gradientBorder {
+	border: double 2px transparent;
+	background-image: linear-gradient(white, white),
+		radial-gradient(circle at top left, rgb(218, 0, 69), rgb(135, 193, 1));
+	background-clip: padding-box, border-box;
+	background-origin: padding-box, border-box;
+	box-sizing: border-box;
+}
+
+.topHeaderBg {
+	background: rgb(255, 255, 255);
+	background: radial-gradient(
+		circle,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 1) 48%,
+		rgba(193, 252, 70, 1) 100%
+	);
+	border-bottom: solid 6px rgb(254, 219, 21);
+}
+
+.liveHeading {
+	background: rgb(254, 221, 130);
+	background: radial-gradient(
+		circle,
+		rgb(253, 216, 114) 30%,
+		rgb(230, 97, 36) 100%
+	);
+}
+
+.faqBg {
+	background: rgb(255, 190, 11);
+	background: linear-gradient(
+		145deg,
+		rgba(255, 190, 11, 0.9389005602240896) 4%,
+		rgba(251, 86, 7, 0.7624299719887955) 21%,
+		rgba(244, 38, 127, 0.8660714285714286) 46%,
+		rgba(131, 56, 236, 0.7904411764705882) 80%,
+		rgba(58, 134, 255, 0.8240546218487395) 99%
+	);
+}
+
+.faqHeaderBg {
+	background: rgb(255, 190, 11);
+	background: linear-gradient(
+		304deg,
+		rgba(255, 190, 11, 0.9389005602240896) 4%,
+		rgba(251, 86, 7, 0.7624299719887955) 21%,
+		rgba(244, 38, 127, 0.8660714285714286) 46%,
+		rgba(131, 56, 236, 0.7904411764705882) 80%,
+		rgba(58, 134, 255, 0.8240546218487395) 99%
+	);
+}
+
+.headerBg {
+	background: rgb(255, 190, 11);
+	background: linear-gradient(
+		304deg,
+		rgba(255, 190, 11, 0.9389005602240896) 4%,
+		rgba(251, 86, 7, 0.7624299719887955) 21%,
+		rgba(244, 38, 127, 0.8660714285714286) 46%,
+		rgba(131, 56, 236, 0.7904411764705882) 80%,
+		rgba(58, 134, 255, 0.8240546218487395) 99%
+	);
+}
+
+.fastResultName {
+	background: rgb(216, 249, 248);
+	background: radial-gradient(
+		circle,
+		rgba(216, 249, 248, 1) 5%,
+		rgba(238, 238, 238, 1) 100%
+	);
+}
+
+.resultBg {
+	background: rgb(238, 228, 170);
+	background: linear-gradient(
+		25deg,
+		rgba(238, 228, 170, 1) 13%,
+		rgba(255, 229, 217, 1) 50%,
+		rgba(247, 149, 164, 1) 98%
+	);
 }

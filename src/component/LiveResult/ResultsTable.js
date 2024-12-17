@@ -117,7 +117,7 @@ const ResultsTable = () => {
 		<>
 			<div className="bg-red-50">
 				<div className=" pb-6">
-					<div className=" bg-[#ef233c] py-4 mb-4">
+					<div className="bg-gradient-to-r from-[#ef233c] to-pink-500 py-4 mb-4">
 						<h2 className="text-2xl font-semibold text-center text-white">Live Results</h2>
 					</div>
 					<div className="grid gap-4 container">
@@ -134,7 +134,7 @@ const ResultsTable = () => {
 									<div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
 										<div className="space-y-1">
 											<h3 className="font-bold text-red-600">{result.name}</h3>
-											<p className="text-sm text-gray-500">{result.chartName}</p>
+											{/* <p className="text-sm text-gray-500">{result.chartName}</p> */}
 										</div>
 										<div className="text-center">
 											<span className="text-2xl font-bold tracking-wider">

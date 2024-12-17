@@ -25,12 +25,12 @@ const StarLineResult = () => {
 					<div className="bg-gradient-to-r from-[#e11d48] to-[#c013fa] text-white text-center py-2 font-bold text-lg">
 						STARLINE RESULT
 					</div>
-					<div className='bg-pink-50 pb-6'>
+					<div className='bg-gradient-to-tr from-red-300 to-purple-300 pb-6'>
 						<div className="container flex gap-5 flex-col sm:flex-row">
 							{/* First Column */}
 							<table className="w-full sm:w-1/2 border-collapse border border-gray-300 bg-white mt-4">
 								<thead>
-									<tr className='bg-red-200'>
+									<tr className='bg-gradient-to-tl from-green-300 to-yellow-200'>
 										<th className="border border-gray-300 px-4 py-2 text-gray-600">Time</th>
 										<th className="border border-gray-300 px-4 py-2 text-gray-600">Result</th>
 									</tr>
@@ -51,7 +51,7 @@ const StarLineResult = () => {
 							{/* Second Column */}
 							<table className="w-full sm:w-1/2 border-collapse border border-gray-300 bg-white mt-4">
 								<thead>
-									<tr className='bg-red-200'>
+									<tr className='bg-gradient-to-tl from-green-300 to-yellow-200'>
 										<th className="border border-gray-300 px-4 py-2 text-gray-600">Time</th>
 										<th className="border border-gray-300 px-4 py-2 text-gray-600">Result</th>
 									</tr>
