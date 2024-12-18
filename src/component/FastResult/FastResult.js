@@ -1,8 +1,9 @@
 import React from 'react'
+import { LuRefreshCw } from "react-icons/lu";
 
 const ScheduleCard = ({ title, timeLabel, time, result }) => {
 	return (
-		<div className="w-full max-w-4xl p-1 rounded-lg bg-gradient-to-br from-pink-500 to-orange-500 relative overflow-hidden">
+		<div className="w-full max-w-4xl p-1 rounded-lg bg-gradient-to-br from-pink-500 to-orange-500 relative overflow-hidden relative">
 			<div className="bg-gradient-to-br from-purple-800 via-pink-500 to-orange-300 rounded-md p-4 text-center">
 				<h2 className="text-white text-2xl font-bold uppercase tracking-wider mb-1 drop-shadow-md">
 					{title}
@@ -14,6 +15,10 @@ const ScheduleCard = ({ title, timeLabel, time, result }) => {
 					{timeLabel}: <span className="font-semibold text-yellow-300 drop-shadow-md">{time}</span>
 				</p>
 			</div>
+			<button className='absolute top-4 right-4 shadow-sm px-2 py-1 rounded-md bg-[#931c2c] hover:bg-[#6e1d4f] text-white font-light text-sm flex gap-2 item-center transition-all'>
+				<p>Refresh</p>
+				<p className='mt-[3px]'><LuRefreshCw size={14} /></p>
+			</button>
 		</div>
 	);
 };
