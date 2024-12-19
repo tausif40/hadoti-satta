@@ -7,7 +7,7 @@ function Header() {
 			<div className="container mx-auto px-4 py-6">
 				<div className="flex flex-col items-center space-y-4 text-center">
 					<h1 className="text-3xl md:text-4xl font-bold">
-						Fast Lotto Results
+						Hadoti Results
 					</h1>
 					<p className="text-purple-100 max-w-2xl">
 						Get the latest satta results, updated in real-time. View winning numbers and draw times for all major games.
