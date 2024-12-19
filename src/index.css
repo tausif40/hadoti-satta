@@ -33,6 +33,13 @@ ul {
 	list-style: none;
 }
 
+input {
+	outline: none;
+}
+/* input:focus {
+	border-color: rgba(244, 38, 127);
+} */
+
 .container {
 	max-width: 1400px;
 	margin-inline: auto;
