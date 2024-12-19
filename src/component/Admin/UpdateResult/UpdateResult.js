@@ -23,7 +23,7 @@ const UpdateResult = () => {
 			}
 		};
 
-		fetchSchedules();
+		// fetchSchedules();
 	}, []);
 
 	const handleInputChange = (e) => {
