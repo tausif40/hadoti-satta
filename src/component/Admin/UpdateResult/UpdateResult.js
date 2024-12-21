@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { BASE_URL } from '../../../app.url';
+import FutureResult from './FutureResult';
+import { useNavigate } from 'react-router-dom';
 
 const UpdateResult = () => {
+	const navigate = useNavigate();
 	const [ schedules, setSchedules ] = useState([]);
 	const [ toggle, setToggle ] = useState(false);
 	const [ newSchedule, setNewSchedule ] = useState({
@@ -23,28 +26,6 @@ const UpdateResult = () => {
 		if (hoursInt === 0) hoursInt = 12;
 		return `${hoursInt}:${minutes} ${ampm}`;
 	}
-
-	useEffect(() => {
-		const fetchSchedules = async () => {
-			try {
-				await axios.get(`${BASE_URL}/schedules`, {
-					headers: {
-						'Content-Type': 'application/json',
-						authorization: `Bearer ${token}`,
-					},
-				}).then((response) => {
-					console.log(response);
-					setSchedules(response.data);
-				}).catch((error) => {
-					console.log(error);
-				});
-			} catch (error) {
-				console.error('Error fetching schedules:', error);
-				toast.error('Failed to load schedules');
-			}
-		};
-		fetchSchedules();
-	}, [ toggle ]);
 
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
@@ -76,7 +57,7 @@ const UpdateResult = () => {
 	};
 
 	return (
-		<div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 p-8">
+		<div className="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 px-2 py-8 sm:p-8">
 			<div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
 				<div className="p-8">
 					<h1 className="text-3xl font-semibold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">
@@ -132,24 +113,10 @@ const UpdateResult = () => {
 							Add Schedule
 						</button>
 					</form>
-
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-						{schedules.map((schedule, index) => (
-							<div
-								key={index}
-								className="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 p-1 rounded-lg shadow-lg"
-							>
-								<div className="bg-white p-4 rounded-lg flex flex-col items-center">
-									<h2 className="text-xl font-semibold mb-2">{schedule.title}</h2>
-									<p className="text-lg font-bold text-purple-600">{schedule.result}</p>
-									<p className="text-gray-600">{schedule.timeLabel}: {schedule.time}</p>
-								</div>
-							</div>
-						))}
-					</div>
+					<FutureResult toggle={toggle} />
 				</div>
 			</div>
-		</div>
+		</div >
 	);
 };
 

@@ -8,12 +8,22 @@ import Faq from './component/Faq/Faq';
 import Footer from './component/Footer/Footer';
 import AdminLogin from './component/Admin/Login/AdminLogin';
 import UpdateResult from './component/Admin/UpdateResult/UpdateResult';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
+import { useEffect } from 'react';
 
 function App() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const token = sessionStorage.getItem('token')
+    if (!token) {
+      navigate('/admin')
+    }
+  }, [])
+
   return (
     <>
+
       <Toaster position="top-right" reverseOrder={false} />
       <Routes>
 

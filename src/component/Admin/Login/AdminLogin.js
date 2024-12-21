@@ -1,37 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Eye, EyeOff } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from '../../../app.url';
 
 const AdminLogin = () => {
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 	const [ email, setEmail ] = useState('');
 	const [ password, setPassword ] = useState('');
 	const [ showPassword, setShowPassword ] = useState(false);
 	const [ loading, setLoading ] = useState(false);
 	const [ error, setError ] = useState('');
 
+	const SESSION_TIMEOUT = 5 * 60 * 10000;
+
+	useEffect(() => {
+		const sessionStartTime = sessionStorage.getItem('sessionStartTime');
+		const currentTime = Date.now();
+		if (sessionStartTime && currentTime - sessionStartTime > SESSION_TIMEOUT) {
+
+			sessionStorage.removeItem('token');
+			sessionStorage.removeItem('sessionStartTime');
+			navigate('/admin');
+		}
+	}, [ navigate ]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setLoading(true);
 		setError('');
 
-		const data = { email: email, password: password }
+		const data = { email, password };
 		console.log(data);
+
 		try {
 			await axios.post(`${BASE_URL}/logIn`, data, {
 				headers: { 'Content-Type': 'application/json' }
-			})
-				.then((response) => {
-					console.log(response);
-					console.log('Login successful:', response);
-					navigate('/update-result')
-					sessionStorage.setItem('token', response?.data?.token);
-				}).catch((err) => {
-					console.log(err);
-				})
+			}).then((response) => {
+				console.log(response);
+				console.log('Login successful:', response);
+				sessionStorage.setItem('token', response?.data?.token);
+				sessionStorage.setItem('sessionStartTime', Date.now());
+				navigate('/update-result');
+			}).catch((err) => {
+				console.log(err);
+				setError('Login failed! Please check your email & password.');
+			});
 		} catch (err) {
 			setError('Login failed! Please check your email & password.');
 			console.error('Login error:', err);
@@ -99,11 +113,6 @@ const AdminLogin = () => {
 						</button>
 					</div>
 				</form>
-				{/* <div className="text-center mt-6">
-					<a href="#" className="text-sm text-purple-600 hover:text-purple-800 transition duration-300 ease-in-out">
-						Forgot your password?
-					</a>
-				</div> */}
 			</div>
 		</div>
 	);

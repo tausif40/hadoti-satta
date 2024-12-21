@@ -8,11 +8,12 @@ const ScheduleCard = ({ title, timeLabel, time, result, refresh }) => {
 	const [ isRefreshing, setIsRefreshing ] = useState(false);
 
 	const handleRefresh = async () => {
+		// console.log(isRefreshing);
 		setIsRefreshing(true);
-		await refresh();
-		setIsRefreshing(false);
-		// refresh((prev) => !prev);
-		// setTimeout(() => setIsRefreshing(false), 1000);
+		// await refresh();
+		// setIsRefreshing(false);
+		refresh((prev) => !prev);
+		setTimeout(() => setIsRefreshing(false), 1000);
 	};
 
 	return (
@@ -22,7 +23,7 @@ const ScheduleCard = ({ title, timeLabel, time, result, refresh }) => {
 					{title}
 				</h2>
 				<p className="text-gray-100 font-semibold text-2xl py-3">
-					{result}
+					{result ? result : '_ _ _ _ _'}
 				</p>
 				<p className="text-white text-lg">
 					{timeLabel}: <span className="font-semibold text-yellow-300 drop-shadow-md">{time}</span>
@@ -32,7 +33,7 @@ const ScheduleCard = ({ title, timeLabel, time, result, refresh }) => {
 				className='absolute top-4 right-4 shadow-sm px-2 py-1 rounded-md bg-[#931c2c] hover:bg-[#6e1d4f] text-white font-light text-sm flex gap-2 items-center transition-all'
 				onClick={handleRefresh}
 			>
-				<p>Refresh</p>
+				<p> {isRefreshing ? 'Refresh...' : 'Refresh'}</p>
 				<p className={`mt-[3px] ${isRefreshing ? 'animate-spin' : ''}`}><LuRefreshCw size={14} /></p>
 			</button>
 		</div>
