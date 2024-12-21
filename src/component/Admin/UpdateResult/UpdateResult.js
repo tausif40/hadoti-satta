@@ -17,6 +17,13 @@ const UpdateResult = () => {
 	});
 
 	const token = sessionStorage.getItem("token");
+	useEffect(() => {
+		const token = sessionStorage.getItem('token')
+		if (!token) {
+			navigate('/admin')
+		}
+	}, [])
+
 
 	function convertTo12HourFormat(time24) {
 		const [ hours, minutes ] = time24.split(':');

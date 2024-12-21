@@ -13,13 +13,7 @@ import { Toaster } from 'react-hot-toast';
 import { useEffect } from 'react';
 
 function App() {
-  const navigate = useNavigate();
-  useEffect(() => {
-    const token = sessionStorage.getItem('token')
-    if (!token) {
-      navigate('/admin')
-    }
-  }, [])
+  
 
   return (
     <>
