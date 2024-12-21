@@ -1,9 +1,22 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { LuRefreshCw } from "react-icons/lu";
+import { BASE_URL } from '../../app.url';
+import toast from 'react-hot-toast';
 
-const ScheduleCard = ({ title, timeLabel, time, result }) => {
+const ScheduleCard = ({ title, timeLabel, time, result, refresh }) => {
+	const [ isRefreshing, setIsRefreshing ] = useState(false);
+
+	const handleRefresh = async () => {
+		setIsRefreshing(true);
+		await refresh();
+		setIsRefreshing(false);
+		// refresh((prev) => !prev);
+		// setTimeout(() => setIsRefreshing(false), 1000);
+	};
+
 	return (
-		<div className="w-full max-w-4xl p-1 rounded-lg bg-gradient-to-br from-pink-500 to-orange-500 relative overflow-hidden relative">
+		<div className="w-full max-w-4xl p-1 rounded-lg bg-gradient-to-br from-pink-500 to-orange-500 relative overflow-hidden">
 			<div className="bg-gradient-to-br from-purple-800 via-pink-500 to-orange-300 rounded-md p-4 text-center">
 				<h2 className="text-white text-2xl font-bold uppercase tracking-wider mb-1 drop-shadow-md">
 					{title}
@@ -15,22 +28,43 @@ const ScheduleCard = ({ title, timeLabel, time, result }) => {
 					{timeLabel}: <span className="font-semibold text-yellow-300 drop-shadow-md">{time}</span>
 				</p>
 			</div>
-			<button className='absolute top-4 right-4 shadow-sm px-2 py-1 rounded-md bg-[#931c2c] hover:bg-[#6e1d4f] text-white font-light text-sm flex gap-2 item-center transition-all'>
+			<button
+				className='absolute top-4 right-4 shadow-sm px-2 py-1 rounded-md bg-[#931c2c] hover:bg-[#6e1d4f] text-white font-light text-sm flex gap-2 items-center transition-all'
+				onClick={handleRefresh}
+			>
 				<p>Refresh</p>
-				<p className='mt-[3px]'><LuRefreshCw size={14} /></p>
+				<p className={`mt-[3px] ${isRefreshing ? 'animate-spin' : ''}`}><LuRefreshCw size={14} /></p>
 			</button>
 		</div>
 	);
 };
 
 function LiveResult() {
+	const [ toggle, setToggle ] = useState(false);
+	const [ schedules, setSchedules ] = useState([]);
+	const token = sessionStorage.getItem("token");
 
-	const schedules = [
-		{ title: "Hadoti Day", timeLabel: "Open", time: "11:45 AM", result: '15-563-69' },
-		{ title: "Hadoti Day", timeLabel: "Close", time: "12:45 PM", result: '3-59-456' },
-		{ title: "Hadoti Night", timeLabel: "Open", time: "07:45 PM", result: '236-56-8' },
-		{ title: "Hadoti Night", timeLabel: "Close", time: "08:45 PM", result: '1-3-96' },
-	];
+	useEffect(() => {
+		const fetchSchedules = async () => {
+			try {
+				await axios.get(`${BASE_URL}/schedules`, {
+					headers: {
+						'Content-Type': 'application/json',
+						authorization: `Bearer ${token}`
+					},
+				}).then((response) => {
+					console.log(response);
+					setSchedules(response.data);
+				}).catch((error) => {
+					console.log(error);
+				});
+			} catch (error) {
+				console.error('Error fetching schedules:', error);
+				toast.error('Network Error');
+			}
+		};
+		fetchSchedules();
+	}, [ toggle ]);
 
 	return (
 		<div className="resultBg border my-8">
@@ -47,10 +81,12 @@ function LiveResult() {
 						timeLabel={schedule.timeLabel}
 						time={schedule.time}
 						result={schedule.result}
+						refresh={setToggle}
 					/>
 				))}
 			</div>
 		</div>
 	);
 }
+
 export default LiveResult;

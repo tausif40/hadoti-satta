@@ -5,7 +5,7 @@ import { BASE_URL } from '../../../app.url';
 
 const UpdateResult = () => {
 	const [ schedules, setSchedules ] = useState([]);
-	const [ toggle, setToggle ] = useState(false)
+	const [ toggle, setToggle ] = useState(false);
 	const [ newSchedule, setNewSchedule ] = useState({
 		title: '',
 		timeLabel: '',
@@ -15,20 +15,29 @@ const UpdateResult = () => {
 
 	const token = sessionStorage.getItem("token");
 
+	function convertTo12HourFormat(time24) {
+		const [ hours, minutes ] = time24.split(':');
+		let hoursInt = parseInt(hours);
+		const ampm = hoursInt >= 12 ? 'PM' : 'AM';
+		hoursInt = hoursInt % 12;
+		if (hoursInt === 0) hoursInt = 12;
+		return `${hoursInt}:${minutes} ${ampm}`;
+	}
+
 	useEffect(() => {
 		const fetchSchedules = async () => {
 			try {
 				await axios.get(`${BASE_URL}/schedules`, {
 					headers: {
 						'Content-Type': 'application/json',
-						authorization: `Bearer ${token}`
+						authorization: `Bearer ${token}`,
 					},
 				}).then((response) => {
 					console.log(response);
 					setSchedules(response.data);
 				}).catch((error) => {
 					console.log(error);
-				})
+				});
 			} catch (error) {
 				console.error('Error fetching schedules:', error);
 				toast.error('Failed to load schedules');
@@ -45,21 +54,25 @@ const UpdateResult = () => {
 	const handleSubmit = async (e) => {
 		const toastId = toast.loading("Updating...");
 		e.preventDefault();
-		console.log(newSchedule);
-		await axios.post(`${BASE_URL}/schedules`, newSchedule, {
+
+		const time12 = convertTo12HourFormat(newSchedule.time);
+
+		const scheduleData = { ...newSchedule, time: time12 };
+		console.log(scheduleData);
+		await axios.post(`${BASE_URL}/schedules`, scheduleData, {
 			headers: {
 				'Content-Type': 'application/json',
-				authorization: `Bearer ${token}`
+				authorization: `Bearer ${token}`,
 			},
 		}).then((response) => {
 			console.log('API Response:', response.data);
-			setToggle((pre) => !pre)
+			setToggle((pre) => !pre);
 			setNewSchedule({ title: '', timeLabel: '', time: '', result: '' });
 			toast.success("Update successful!", { id: toastId });
 		}).catch((error) => {
 			console.log(error);
 			toast.error("Update Failed", { id: toastId });
-		})
+		});
 	};
 
 	return (
