@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Eye, EyeOff } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from '../../../app.url';
 
 const AdminLogin = () => {
 	const navigate = useNavigate()
@@ -11,16 +12,26 @@ const AdminLogin = () => {
 	const [ loading, setLoading ] = useState(false);
 	const [ error, setError ] = useState('');
 
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setLoading(true);
 		setError('');
 
+		const data = { email: email, password: password }
+		console.log(data);
 		try {
-			const response = await axios.post('/api/login', { email, password });
-			console.log('Login successful:', response.data);
-			// Handle successful login here (e.g., store token, redirect)
-			navigate('/update-result')
+			await axios.post(`${BASE_URL}/logIn`, data, {
+				headers: { 'Content-Type': 'application/json' }
+			})
+				.then((response) => {
+					console.log(response);
+					console.log('Login successful:', response);
+					navigate('/update-result')
+					sessionStorage.setItem('token', response?.data?.token);
+				}).catch((err) => {
+					console.log(err);
+				})
 		} catch (err) {
 			setError('Login failed! Please check your email & password.');
 			console.error('Login error:', err);
