@@ -1,97 +1,73 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { BASE_URL } from '../../app.url';
+import React from 'react';
+import monthlyData from './monthlyData.json';
 
+const SattaMatkaCalendar = () => {
+	const { month, year, data } = monthlyData;
 
-const renderTable = (title, data) => {
-
-	const formatDate = (dateString) => {
-		const date = new Date(dateString);
-		const day = String(date.getDate()).padStart(2, '0');
-		const month = String(date.getMonth() + 1).padStart(2, '0');
-		const year = String(date.getFullYear());
-		return `${day}-${month}-${year}`;
+	const getRandomPastelColor = () => {
+		const hue = Math.floor(Math.random() * 360);
+		return `hsl(${hue}, 70%, 85%)`;
 	};
-	//  border="1" style={{ width: '100%', marginBottom: '20px', borderCollapse: 'collapse' }}
-	const filteredData = data?.filter(item => item.title === title);
+
+	const daysInMonth = new Date(year, new Date(`${month} 1, ${year}`).getMonth() + 1, 0).getDate();
+	const firstDayOfMonth = new Date(`${month} 1, ${year}`).getDay();
+
+	const calendarDays = Array.from({ length: daysInMonth }, (_, i) => i + 1);
+	const emptyDays = Array.from({ length: firstDayOfMonth }, (_, i) => `empty-${i}`);
+
 	return (
-		<table className="w-full border-collapse border border-gray-300 bg-white">
-			<thead>
-				<tr className='bg-gradient-to-tl from-green-300 to-yellow-200'>
-					<th className="border border-gray-300 px-4 py-2 text-gray-600">Date</th>
-					<th className="border border-gray-300 px-4 py-2 text-gray-600">Open/Close</th>
-					{/* <th className='text-start'>Time</th> */}
-					<th className="border border-gray-300 px-4 py-2 text-gray-600">Result</th>
-				</tr>
-			</thead>
-			<tbody >
-				{filteredData?.map((item, index) => (
-					<tr key={index} className='even:bg-gray-50'>
-						<td className="border border-gray-300 px-4 py-2 text-center">{formatDate(item.createdAt)}</td>
-						<td className="border border-gray-300 px-4 py-2 text-center">{item.timeLabel}</td>
-						{/* <td>{item.time}</td> */}
-						<td className="border border-gray-300 px-4 py-2 text-center">{item.result}</td>
-					</tr>
+		<div className="font-sans bg-gray-100 p-5 rounded-lg shadow-md">
+			<h1 className="text-center text-gray-800 text-4xl mb-12 pb-2 font-bold shadow-sm">
+				Hadoti Results Chart - {month} {year}
+			</h1>
+			<div className="grid grid-cols-7 gap-2 mb-5 px-8 mt-6">
+				{[ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ].map(day => (
+					<div key={day} className="text-center font-bold p-2 bg-gray-300 rounded">
+						{day}
+					</div>
 				))}
-			</tbody>
-		</table>
-	);
-};
-
-const ResultChat = () => {
-	const [ data, setData ] = useState([])
-	const token = sessionStorage.getItem("token");
-
-	useEffect(() => {
-		const fetchChat = async () => {
-			try {
-				await axios.get(`${BASE_URL}/monthly-schedules`, {
-					headers: {
-						'Content-Type': 'application/json',
-						authorization: `Bearer ${token}`
-					},
-				}).then((response) => {
-					// console.log(response);
-					setData(response?.data);
-				}).catch((error) => {
-					console.log(error);
-				});
-			} catch (error) {
-				console.error('Error fetching schedules:', error);
-			}
-		};
-		fetchChat();
-	}, []);
-
-	console.log(data);
-
-	// const half = Math.ceil(data.length / 2);
-	// const firstHalf = data.slice(0, half);
-	// const secondHalf = data.slice(half);
-
-	return (
-		<>
-			<div className='mt-8'>
-				<div className="py-4">
-					<div className="bg-gradient-to-r from-[#e11d48] to-[#c013fa] text-white text-center py-2 font-bold text-lg">
-						HADOTI PANEL CHAT
-					</div>
-					<div className='bg-gradient-to-tr from-red-300 to-purple-300 pb-6'>
-						<div className='container pt-4 grid grid-cols-1 sm:grid-cols-2 gap-10 '>
-							<div className='w-full border p-2 rounded'>
-								<h1 className='w-full bg-red-400 text-xl font-semibold p-2 text-center mb-2 text-gray-900'>Hadoti Day Result</h1>
-								{renderTable("Hadoti Day", data)}
-							</div>
-							<div className='w-full border p-2 rounded'>
-								<h1 className='w-full bg-red-400 text-xl font-semibold p-2 text-center mb-2 text-gray-900'>Hadoti Night Result</h1>
-								{renderTable("Hadoti Night", data)}
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
-		</>
+			<div className="grid grid-cols-7 gap-2 px-8">
+				{emptyDays.map(day => (
+					<div key={day} className="p-2"></div>
+				))}
+				{calendarDays.map(day => {
+					const dayData = data.find(item => new Date(item.date).getDate() === day);
+					return (
+						<div
+							key={day}
+							className="bg-white rounded-lg p-3 shadow-md min-h-[200px] overflow-auto mb-6"
+						>
+							<h3 className="text-center mb-2 text-gray-800 font-bold">
+								{`${day} ${`Dec`} ${year}`}
+							</h3>
+							{dayData ? (
+								dayData.entries.map(entry => (
+									<div
+										key={entry.id}
+										className="mb-2 p-2 rounded-md"
+										style={{ backgroundColor: getRandomPastelColor() }}
+									>
+										<p className="font-bold mb-1">{entry.title}</p>
+										<div className='flex'>
+											<p className="text-sm mb-1">
+												{entry.timeLabel} -
+												{/* - {entry.time} */}
+											</p>
+											<p className="font-bold text-red-600"> {entry.result}</p>
+										</div>
+									</div>
+								))
+							) : (
+								<p className="text-center text-gray-500">No data</p>
+							)}
+						</div>
+					);
+				})}
+			</div>
+		</div>
 	);
 };
 
-export default ResultChat;
+export default SattaMatkaCalendar;
+

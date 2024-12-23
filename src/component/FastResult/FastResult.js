@@ -33,7 +33,7 @@ const ScheduleCard = ({ title, timeLabel, time, result, refresh }) => {
 				className='absolute top-4 right-4 shadow-sm px-2 py-1 rounded-md bg-[#931c2c] hover:bg-[#6e1d4f] text-white font-light text-sm flex gap-2 items-center transition-all'
 				onClick={handleRefresh}
 			>
-				<p> {isRefreshing ? 'Refresh...' : 'Refresh'}</p>
+				<p> {isRefreshing ? 'Refreshing..' : 'Refresh'}</p>
 				<p className={`mt-[3px] ${isRefreshing ? 'animate-spin' : ''}`}><LuRefreshCw size={14} /></p>
 			</button>
 		</div>
