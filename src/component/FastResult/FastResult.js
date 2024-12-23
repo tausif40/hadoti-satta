@@ -54,7 +54,7 @@ function LiveResult() {
 						authorization: `Bearer ${token}`
 					},
 				}).then((response) => {
-					console.log(response);
+					// console.log(response);
 					setSchedules(response.data);
 				}).catch((error) => {
 					console.log(error);
@@ -75,7 +75,7 @@ function LiveResult() {
 				<img src="/assets/img/zap.png" alt="" className="w-10" />
 			</p>
 			<div className="container flex flex-col gap-5 items-center justify-center py-10">
-				{schedules.map((schedule, index) => (
+				{schedules?.map((schedule, index) => (
 					<ScheduleCard
 						key={index}
 						title={schedule.title}
@@ -85,6 +85,8 @@ function LiveResult() {
 						refresh={setToggle}
 					/>
 				))}
+				{/* {schedules && schedules?.length === 0 ? <p className='text-white text-2xl font-bold m-auto'>No Result Available</p> : ''} */}
+				{/* {loading && <p className='text-white text-2xl font-bold m-auto'>Wait...</p>} */}
 			</div>
 		</div>
 	);

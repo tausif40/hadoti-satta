@@ -3,17 +3,16 @@ import Header from './component/NavBar/Header';
 import TopNav from './component/NavBar/TopNav';
 import FastResult from './component/FastResult/FastResult';
 import ResultsTable from './component/LiveResult/ResultsTable';
-import StarLineResult from './component/StarLineResult/StarLineResult';
+import ResultChat from './component/ResultChat/ResultChat';
 import Faq from './component/Faq/Faq';
 import Footer from './component/Footer/Footer';
 import AdminLogin from './component/Admin/Login/AdminLogin';
 import UpdateResult from './component/Admin/UpdateResult/UpdateResult';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import { useEffect } from 'react';
 
 function App() {
-  
+
 
   return (
     <>
@@ -27,7 +26,7 @@ function App() {
             <Header />
             <FastResult />
             {/* <ResultsTable /> */}
-            <StarLineResult />
+            <ResultChat />
             <Faq />
             <Footer />
           </>
