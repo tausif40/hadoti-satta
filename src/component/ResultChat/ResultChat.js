@@ -96,7 +96,7 @@ const ResultChat = () => {
 							<div key={index}>
 								<div className="flex gap-4 px-4 items-center border-b">
 									<div className="font-semibold">
-										<p className="min-w-max px-2 py-1 lg:px-12 text-center text-xl">
+										<p className=" min-w-36 px-1 py-1 lg:px-8 text-center text-xl">
 											{dayData?._id && formatDate(dayData._id)}
 										</p>
 									</div>
