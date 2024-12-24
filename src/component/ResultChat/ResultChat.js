@@ -1,73 +1,124 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { BASE_URL } from '../../app.url';
 import monthlyData from './monthlyData.json';
 
-const SattaMatkaCalendar = () => {
-	const { month, year, data } = monthlyData;
 
-	const getRandomPastelColor = () => {
-		const hue = Math.floor(Math.random() * 360);
-		return `hsl(${hue}, 70%, 85%)`;
+const FormattedResult = ({ result }) => {
+	const parseResult = (input) => {
+		const parts = input.split('-');
+		let first = '', middle = '', last = '';
+
+		if (parts.length === 1) {
+			// Case for single number (e.g., "222")
+			first = parts[ 0 ].slice(0, 3);
+			middle = parts[ 0 ].slice(3, 5);
+			last = parts[ 0 ].slice(5);
+		} else if (parts.length === 2) {
+			// Case for two parts (e.g., "1-3" or "123-36")
+			if (parts[ 0 ].length === 1) {
+				first = parts[ 0 ].padEnd(3, '*');
+				last = parts[ 1 ].padEnd(3, '*');
+			} else {
+				first = parts[ 0 ].slice(0, 3);
+				middle = parts[ 0 ].slice(3);
+				last = parts[ 1 ].padEnd(3, '*');
+			}
+		} else if (parts.length === 3) {
+			// Case for three parts (e.g., "403-77-389" or "123-562-69")
+			first = parts[ 0 ].padEnd(3, '*');
+			middle = parts[ 1 ].slice(0, 2);
+			last = parts[ 2 ].padEnd(3, '*');
+		}
+
+		return { first, middle, last };
 	};
 
-	const daysInMonth = new Date(year, new Date(`${month} 1, ${year}`).getMonth() + 1, 0).getDate();
-	const firstDayOfMonth = new Date(`${month} 1, ${year}`).getDay();
-
-	const calendarDays = Array.from({ length: daysInMonth }, (_, i) => i + 1);
-	const emptyDays = Array.from({ length: firstDayOfMonth }, (_, i) => `empty-${i}`);
-
+	const { first, middle, last } = parseResult(result);
 	return (
-		<div className="font-sans bg-gray-100 p-5 rounded-lg shadow-md">
-			<h1 className="text-center text-gray-800 text-4xl mb-12 pb-2 font-bold shadow-sm">
-				Hadoti Results Chart - {month} {year}
-			</h1>
-			<div className="grid grid-cols-7 gap-2 mb-5 px-8 mt-6">
-				{[ 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat' ].map(day => (
-					<div key={day} className="text-center font-bold p-2 bg-gray-300 rounded">
-						{day}
-					</div>
-				))}
+		<div className="text-xl px-4">
+			<div className="grid grid-cols-3 text-center">
+				<div className="col-span-1">{first[ 0 ] || '*'}</div>
+				<div className="col-span-1"></div>
+				<div className="col-span-1">{last[ 0 ] || '*'}</div>
 			</div>
-			<div className="grid grid-cols-7 gap-2 px-8">
-				{emptyDays.map(day => (
-					<div key={day} className="p-2"></div>
-				))}
-				{calendarDays.map(day => {
-					const dayData = data.find(item => new Date(item.date).getDate() === day);
-					return (
-						<div
-							key={day}
-							className="bg-white rounded-lg p-3 shadow-md min-h-[200px] overflow-auto mb-6"
-						>
-							<h3 className="text-center mb-2 text-gray-800 font-bold">
-								{`${day} ${`Dec`} ${year}`}
-							</h3>
-							{dayData ? (
-								dayData.entries.map(entry => (
-									<div
-										key={entry.id}
-										className="mb-2 p-2 rounded-md"
-										style={{ backgroundColor: getRandomPastelColor() }}
-									>
-										<p className="font-bold mb-1">{entry.title}</p>
-										<div className='flex'>
-											<p className="text-sm mb-1">
-												{entry.timeLabel} -
-												{/* - {entry.time} */}
-											</p>
-											<p className="font-bold text-red-600"> {entry.result}</p>
-										</div>
-									</div>
-								))
-							) : (
-								<p className="text-center text-gray-500">No data</p>
-							)}
-						</div>
-					);
-				})}
+			<div className="grid grid-cols-3 text-center items-center">
+				<div className="col-span-1">{first[ 1 ] || '*'}</div>
+				<div className="col-span-1 text-3xl font-semibold">{middle || '*'}</div>
+				<div className="col-span-1">{last[ 1 ] || '*'}</div>
+			</div>
+			<div className="grid grid-cols-3 text-center">
+				<div className="col-span-1">{first[ 2 ] || '*'}</div>
+				<div className="col-span-1"></div>
+				<div className="col-span-1">{last[ 2 ] || '*'}</div>
 			</div>
 		</div>
 	);
 };
 
-export default SattaMatkaCalendar;
+
+const ResultChat = () => {
+	const [ data, setData ] = useState([])
+
+	useEffect(() => {
+		const fetchChat = async () => {
+			try {
+				await axios.get(`${BASE_URL}/monthly-schedules`, {
+					headers: {
+						'Content-Type': 'application/json',
+					},
+				}).then((response) => {
+					console.log(response);
+					setData(response?.data);
+				}).catch((error) => {
+					console.log(error);
+				});
+			} catch (error) {
+				console.error('Error fetching schedules:', error);
+			}
+		};
+		fetchChat();
+	}, []);
+	function formatDate(dateString) {
+		const [ year, month, day ] = dateString.split('-');
+		return `${day}-${month}-${year}`;
+	}
+
+	return (
+		<>
+			<div className="text-center bg-red-300 text-gray-800 p-3">
+				<p className="text-2xl font-bold">Hadoti Results Chart</p>
+			</div>
+			<div className="max-w-7xl w-full px-2 md:px-8 lg:px-16 m-auto">
+				<div className="min-w-full overflow-x-auto border my-4 pb-4">
+					<div className="min-w-[1150px]">
+						{data?.map((dayData, index) => (
+							<div key={index}>
+								<div className="flex gap-4 px-4 items-center border-b">
+									<div className="font-semibold">
+										<p className="min-w-max px-2 py-1 lg:px-12 text-center text-xl">
+											{dayData?._id && formatDate(dayData._id)}
+										</p>
+									</div>
+									<div className="grid grid-cols-4 w-full">
+										{dayData?.schedules?.map((entry, entryIndex) => (
+											<React.Fragment key={entryIndex}>
+												<div>
+													<FormattedResult result={entry?.result} />
+												</div>
+											</React.Fragment>
+										))}
+									</div>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</div>
+		</>
+
+	);
+};
+
+export default ResultChat;
 

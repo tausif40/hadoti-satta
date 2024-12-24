@@ -6,32 +6,56 @@
 			"date": "2024-12-01",
 			"entries": [
 				{
-					"id": "2024-12-01-1",
 					"title": "Hadoti Day",
 					"timeLabel": "Open",
-					"time": "09:00 AM",
-					"result": "123-45-678"
+					"time": "12:54 PM",
+					"result": "403-77-389",
+					"createdAt": {
+						"date": "2024-12-23T10:13:38.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T10:13:38.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-01-2",
 					"title": "Hadoti Day",
 					"timeLabel": "Close",
-					"time": "12:00 PM",
-					"result": "456-78-901"
+					"time": "07:45 AM",
+					"result": "570-33-517",
+					"createdAt": {
+						"date": "2024-12-23T10:13:38.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T10:13:38.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-01-3",
 					"title": "Hadoti Night",
 					"timeLabel": "Open",
-					"time": "05:00 PM",
-					"result": "789-01-234"
+					"time": "03:26 PM",
+					"result": "604-29-857",
+					"createdAt": {
+						"date": "2024-12-23T10:13:38.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T10:13:38.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-01-4",
 					"title": "Hadoti Night",
 					"timeLabel": "Close",
-					"time": "09:00 PM",
-					"result": "012-34-567"
+					"time": "02:59 PM",
+					"result": "174-67-625",
+					"createdAt": {
+						"date": "2024-12-23T10:13:38.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T10:13:38.252035"
+					},
+					"__v": 0
 				}
 			]
 		},
@@ -39,65 +63,56 @@
 			"date": "2024-12-02",
 			"entries": [
 				{
-					"id": "2024-12-02-1",
 					"title": "Hadoti Day",
 					"timeLabel": "Open",
-					"time": "09:00 AM",
-					"result": "234-56-789"
+					"time": "01:20 PM",
+					"result": "123-45-678",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-02-2",
 					"title": "Hadoti Day",
 					"timeLabel": "Close",
-					"time": "12:00 PM",
-					"result": "567-89-012"
+					"time": "08:00 AM",
+					"result": "987-65-432",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-02-3",
 					"title": "Hadoti Night",
 					"timeLabel": "Open",
-					"time": "05:00 PM",
-					"result": "890-12-345"
+					"time": "04:30 PM",
+					"result": "543-21-098",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-02-4",
 					"title": "Hadoti Night",
 					"timeLabel": "Close",
-					"time": "09:00 PM",
-					"result": "123-45-678"
-				}
-			]
-		},
-		{
-			"date": "2024-12-02",
-			"entries": [
-				{
-					"id": "2024-12-02-1",
-					"title": "Hadoti Day",
-					"timeLabel": "Open",
-					"time": "09:00 AM",
-					"result": "234-56-789"
-				},
-				{
-					"id": "2024-12-02-2",
-					"title": "Hadoti Day",
-					"timeLabel": "Close",
-					"time": "12:00 PM",
-					"result": "567-89-012"
-				},
-				{
-					"id": "2024-12-02-3",
-					"title": "Hadoti Night",
-					"timeLabel": "Open",
-					"time": "05:00 PM",
-					"result": "890-12-345"
-				},
-				{
-					"id": "2024-12-02-4",
-					"title": "Hadoti Night",
-					"timeLabel": "Close",
-					"time": "09:00 PM",
-					"result": "123-45-678"
+					"time": "03:40 PM",
+					"result": "678-90-123",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				}
 			]
 		},
@@ -105,32 +120,113 @@
 			"date": "2024-12-03",
 			"entries": [
 				{
-					"id": "2024-12-03-1",
 					"title": "Hadoti Day",
 					"timeLabel": "Open",
-					"time": "09:00 AM",
-					"result": "987-65-432"
+					"time": "10:30 AM",
+					"result": "789-01-234",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-03-2",
 					"title": "Hadoti Day",
 					"timeLabel": "Close",
-					"time": "12:00 PM",
-					"result": "123-45-678"
+					"time": "06:45 AM",
+					"result": "432-10-567",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-03-3",
 					"title": "Hadoti Night",
 					"timeLabel": "Open",
-					"time": "05:00 PM",
-					"result": "456-78-901"
+					"time": "02:15 PM",
+					"result": "012-34-567",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-03-4",
 					"title": "Hadoti Night",
 					"timeLabel": "Close",
-					"time": "09:00 PM",
-					"result": "789-01-234"
+					"time": "01:20 PM",
+					"result": "890-12-345",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
+				}
+			]
+		},
+		{
+			"date": "2024-12-03",
+			"entries": [
+				{
+					"title": "Hadoti Day",
+					"timeLabel": "Open",
+					"time": "10:30 AM",
+					"result": "789-01-234",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
+				},
+				{
+					"title": "Hadoti Day",
+					"timeLabel": "Close",
+					"time": "06:45 AM",
+					"result": "432-10-567",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
+				},
+				{
+					"title": "Hadoti Night",
+					"timeLabel": "Open",
+					"time": "02:15 PM",
+					"result": "012-34-567",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
+				},
+				{
+					"title": "Hadoti Night",
+					"timeLabel": "Close",
+					"time": "01:20 PM",
+					"result": "890-12-345",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				}
 			]
 		},
@@ -138,32 +234,56 @@
 			"date": "2024-12-04",
 			"entries": [
 				{
-					"id": "2024-12-04-1",
 					"title": "Hadoti Day",
 					"timeLabel": "Open",
-					"time": "09:00 AM",
-					"result": "321-09-876"
+					"time": "10:30 AM",
+					"result": "790-01-234",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-04-2",
 					"title": "Hadoti Day",
 					"timeLabel": "Close",
-					"time": "12:00 PM",
-					"result": "543-21-098"
+					"time": "06:45 AM",
+					"result": "433-10-567",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-04-3",
 					"title": "Hadoti Night",
 					"timeLabel": "Open",
-					"time": "05:00 PM",
-					"result": "765-43-210"
+					"time": "02:15 PM",
+					"result": "013-34-567",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-04-4",
 					"title": "Hadoti Night",
 					"timeLabel": "Close",
-					"time": "09:00 PM",
-					"result": "987-65-432"
+					"time": "01:20 PM",
+					"result": "891-12-345",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				}
 			]
 		},
@@ -171,32 +291,56 @@
 			"date": "2024-12-05",
 			"entries": [
 				{
-					"id": "2024-12-05-1",
 					"title": "Hadoti Day",
 					"timeLabel": "Open",
-					"time": "09:00 AM",
-					"result": "135-79-246"
+					"time": "10:30 AM",
+					"result": "791-01-234",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-05-2",
 					"title": "Hadoti Day",
 					"timeLabel": "Close",
-					"time": "12:00 PM",
-					"result": "864-20-153"
+					"time": "06:45 AM",
+					"result": "434-10-567",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-05-3",
 					"title": "Hadoti Night",
 					"timeLabel": "Open",
-					"time": "05:00 PM",
-					"result": "246-81-357"
+					"time": "02:15 PM",
+					"result": "014-34-567",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-05-4",
 					"title": "Hadoti Night",
 					"timeLabel": "Close",
-					"time": "09:00 PM",
-					"result": "579-32-468"
+					"time": "01:20 PM",
+					"result": "892-12-345",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				}
 			]
 		},
@@ -204,32 +348,56 @@
 			"date": "2024-12-06",
 			"entries": [
 				{
-					"id": "2024-12-06-1",
 					"title": "Hadoti Day",
 					"timeLabel": "Open",
-					"time": "09:00 AM",
-					"result": "682-51-493"
+					"time": "10:30 AM",
+					"result": "792-01-234",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-06-2",
 					"title": "Hadoti Day",
 					"timeLabel": "Close",
-					"time": "12:00 PM",
-					"result": "371-84-526"
+					"time": "06:45 AM",
+					"result": "435-10-567",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-06-3",
 					"title": "Hadoti Night",
 					"timeLabel": "Open",
-					"time": "05:00 PM",
-					"result": "953-67-281"
+					"time": "02:15 PM",
+					"result": "015-34-567",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-06-4",
 					"title": "Hadoti Night",
 					"timeLabel": "Close",
-					"time": "09:00 PM",
-					"result": "147-08-369"
+					"time": "01:20 PM",
+					"result": "893-12-345",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				}
 			]
 		},
@@ -237,32 +405,56 @@
 			"date": "2024-12-07",
 			"entries": [
 				{
-					"id": "2024-12-07-1",
 					"title": "Hadoti Day",
 					"timeLabel": "Open",
-					"time": "09:00 AM",
-					"result": "258-13-704"
+					"time": "10:30 AM",
+					"result": "793-01-234",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-07-2",
 					"title": "Hadoti Day",
 					"timeLabel": "Close",
-					"time": "12:00 PM",
-					"result": "796-45-182"
+					"time": "06:45 AM",
+					"result": "436-10-567",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-07-3",
 					"title": "Hadoti Night",
 					"timeLabel": "Open",
-					"time": "05:00 PM",
-					"result": "403-97-615"
+					"time": "02:15 PM",
+					"result": "016-34-567",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-07-4",
 					"title": "Hadoti Night",
 					"timeLabel": "Close",
-					"time": "09:00 PM",
-					"result": "810-26-347"
+					"time": "01:20 PM",
+					"result": "894-12-345",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				}
 			]
 		},
@@ -270,197 +462,56 @@
 			"date": "2024-12-08",
 			"entries": [
 				{
-					"id": "2024-12-08-1",
 					"title": "Hadoti Day",
 					"timeLabel": "Open",
-					"time": "09:00 AM",
-					"result": "567-89-012"
+					"time": "10:30 AM",
+					"result": "794-01-234",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-08-2",
 					"title": "Hadoti Day",
 					"timeLabel": "Close",
-					"time": "12:00 PM",
-					"result": "123-45-678"
+					"time": "06:45 AM",
+					"result": "437-10-567",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-08-3",
 					"title": "Hadoti Night",
 					"timeLabel": "Open",
-					"time": "05:00 PM",
-					"result": "987-65-432"
+					"time": "02:15 PM",
+					"result": "017-34-567",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				},
 				{
-					"id": "2024-12-08-4",
 					"title": "Hadoti Night",
 					"timeLabel": "Close",
-					"time": "09:00 PM",
-					"result": "456-78-901"
-				}
-			]
-		},
-		{
-			"date": "2024-12-09",
-			"entries": [
-				{
-					"id": "2024-12-09-1",
-					"title": "Hadoti Day",
-					"timeLabel": "Open",
-					"time": "09:00 AM",
-					"result": "321-09-876"
-				},
-				{
-					"id": "2024-12-09-2",
-					"title": "Hadoti Day",
-					"timeLabel": "Close",
-					"time": "12:00 PM",
-					"result": "789-01-234"
-				},
-				{
-					"id": "2024-12-09-3",
-					"title": "Hadoti Night",
-					"timeLabel": "Open",
-					"time": "05:00 PM",
-					"result": "135-79-246"
-				},
-				{
-					"id": "2024-12-09-4",
-					"title": "Hadoti Night",
-					"timeLabel": "Close",
-					"time": "09:00 PM",
-					"result": "543-21-098"
-				}
-			]
-		},
-		{
-			"date": "2024-12-10",
-			"entries": [
-				{
-					"id": "2024-12-10-1",
-					"title": "Hadoti Day",
-					"timeLabel": "Open",
-					"time": "09:00 AM",
-					"result": "864-20-153"
-				},
-				{
-					"id": "2024-12-10-2",
-					"title": "Hadoti Day",
-					"timeLabel": "Close",
-					"time": "12:00 PM",
-					"result": "246-81-357"
-				},
-				{
-					"id": "2024-12-10-3",
-					"title": "Hadoti Night",
-					"timeLabel": "Open",
-					"time": "05:00 PM",
-					"result": "682-51-493"
-				},
-				{
-					"id": "2024-12-10-4",
-					"title": "Hadoti Night",
-					"timeLabel": "Close",
-					"time": "09:00 PM",
-					"result": "371-84-526"
-				}
-			]
-		},
-		{
-			"date": "2024-12-11",
-			"entries": [
-				{
-					"id": "2024-12-11-1",
-					"title": "Hadoti Day",
-					"timeLabel": "Open",
-					"time": "09:00 AM",
-					"result": "579-32-468"
-				},
-				{
-					"id": "2024-12-11-2",
-					"title": "Hadoti Day",
-					"timeLabel": "Close",
-					"time": "12:00 PM",
-					"result": "953-67-281"
-				},
-				{
-					"id": "2024-12-11-3",
-					"title": "Hadoti Night",
-					"timeLabel": "Open",
-					"time": "05:00 PM",
-					"result": "147-08-369"
-				},
-				{
-					"id": "2024-12-11-4",
-					"title": "Hadoti Night",
-					"timeLabel": "Close",
-					"time": "09:00 PM",
-					"result": "258-13-704"
-				}
-			]
-		},
-		{
-			"date": "2024-12-12",
-			"entries": [
-				{
-					"id": "2024-12-12-1",
-					"title": "Hadoti Day",
-					"timeLabel": "Open",
-					"time": "09:00 AM",
-					"result": "796-45-182"
-				},
-				{
-					"id": "2024-12-12-2",
-					"title": "Hadoti Day",
-					"timeLabel": "Close",
-					"time": "12:00 PM",
-					"result": "403-97-615"
-				},
-				{
-					"id": "2024-12-12-3",
-					"title": "Hadoti Night",
-					"timeLabel": "Open",
-					"time": "05:00 PM",
-					"result": "810-26-347"
-				},
-				{
-					"id": "2024-12-12-4",
-					"title": "Hadoti Night",
-					"timeLabel": "Close",
-					"time": "09:00 PM",
-					"result": "135-79-246"
-				}
-			]
-		},
-		{
-			"date": "2024-12-13",
-			"entries": [
-				{
-					"id": "2024-12-13-1",
-					"title": "Hadoti Day",
-					"timeLabel": "Open",
-					"time": "09:00 AM",
-					"result": "321-09-876"
-				},
-				{
-					"id": "2024-12-13-2",
-					"title": "Hadoti Day",
-					"timeLabel": "Close",
-					"time": "12:00 PM",
-					"result": "864-20-153"
-				},
-				{
-					"id": "2024-12-13-3",
-					"title": "Hadoti Night",
-					"timeLabel": "Open",
-					"time": "05:00 PM",
-					"result": "246-81-357"
-				},
-				{
-					"id": "2024-12-13-4",
-					"title": "Hadoti Night",
-					"timeLabel": "Close",
-					"time": "09:00 PM",
-					"result": "579-32-468"
+					"time": "01:20 PM",
+					"result": "895-12-345",
+					"createdAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"updatedAt": {
+						"date": "2024-12-23T11:14:20.252035"
+					},
+					"__v": 0
 				}
 			]
 		}
