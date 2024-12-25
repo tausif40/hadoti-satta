@@ -43,6 +43,8 @@ const ScheduleCard = ({ title, timeLabel, time, result, refresh }) => {
 function LiveResult() {
 	const [ toggle, setToggle ] = useState(false);
 	const [ schedules, setSchedules ] = useState([]);
+	const [ latestHadotiDay, setLatestHadotiDay ] = useState(null);
+	const [ latestHadotiNight, setLatestHadotiNight ] = useState(null);
 	const token = sessionStorage.getItem("token");
 
 	useEffect(() => {
@@ -54,8 +56,22 @@ function LiveResult() {
 						authorization: `Bearer ${token}`
 					},
 				}).then((response) => {
-					// console.log(response);
-					setSchedules(response.data);
+					console.log(response);
+					const sortedData = response?.data?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+					// Get the latest Hadoti Day entry
+					const latestHadotiDay = sortedData.find(item => item.title === "Hadoti Day");
+
+					// Get the latest Hadoti Night entry
+					const latestHadotiNight = sortedData.find(item => item.title === "Hadoti Night");
+
+					// Print the latest data for Hadoti Day and Hadoti Night
+					console.log("Latest Hadoti Day:", latestHadotiDay);
+					console.log("Latest Hadoti Night:", latestHadotiNight);
+					// setLatestResults(latestTwo);
+					setLatestHadotiDay(latestHadotiDay);
+					setLatestHadotiNight(latestHadotiNight);
+					// setSchedules(response.data);
 				}).catch((error) => {
 					console.log(error);
 				});
@@ -65,7 +81,12 @@ function LiveResult() {
 			}
 		};
 		fetchSchedules();
+
+
+
 	}, [ toggle ]);
+
+
 
 	return (
 		<div className="resultBg border my-8">
@@ -75,7 +96,7 @@ function LiveResult() {
 				<img src="/assets/img/zap.png" alt="" className="w-10" />
 			</p>
 			<div className="container flex flex-col gap-5 items-center justify-center py-10">
-				{schedules?.map((schedule, index) => (
+				{/* {schedules?.map((schedule, index) => (
 					<ScheduleCard
 						key={index}
 						title={schedule.title}
@@ -84,7 +105,23 @@ function LiveResult() {
 						result={schedule.result}
 						refresh={setToggle}
 					/>
-				))}
+				))} */}
+				<ScheduleCard
+					// key={index}
+					title={latestHadotiDay?.title}
+					timeLabel={latestHadotiDay?.timeLabel}
+					time={latestHadotiDay?.time}
+					result={latestHadotiDay?.result}
+					refresh={setToggle}
+				/>
+				<ScheduleCard
+					// key={index}
+					title={latestHadotiNight?.title}
+					timeLabel={latestHadotiNight?.timeLabel}
+					time={latestHadotiNight?.time}
+					result={latestHadotiNight?.result}
+					refresh={setToggle}
+				/>
 				{/* {schedules && schedules?.length === 0 ? <p className='text-white text-2xl font-bold m-auto'>No Result Available</p> : ''} */}
 				{/* {loading && <p className='text-white text-2xl font-bold m-auto'>Wait...</p>} */}
 			</div>
