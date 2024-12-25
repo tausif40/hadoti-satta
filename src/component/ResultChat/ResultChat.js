@@ -105,7 +105,7 @@ const ResultChat = () => {
 											<React.Fragment key={entryIndex}>
 												<div>
 													<FormattedResult result={entry?.result} />
-												</div>
+												</div>	
 											</React.Fragment>
 										))}
 									</div>

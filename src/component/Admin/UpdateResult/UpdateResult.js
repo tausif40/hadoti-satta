@@ -55,7 +55,7 @@ const UpdateResult = () => {
 		}).then((response) => {
 			console.log('API Response:', response.data);
 			setToggle((pre) => !pre);
-			setNewSchedule({ title: '', timeLabel: '', time: '', result: '' });
+			setNewSchedule({ title: '', timeLabel: '', time: '', date: '', result: '' });
 			toast.success("Update successful!", { id: toastId });
 		}).catch((error) => {
 			console.log(error);
@@ -104,12 +104,20 @@ const UpdateResult = () => {
 								required
 							/>
 							<input
+								type="date"
+								name="date"
+								value={newSchedule.date}
+								onChange={handleInputChange}
+								className="p-2 border border-gray-300 rounded-md focus:ring-1 focus:ring-purple-500 focus:border-transparent focus:outline-red-500"
+								required
+							/>
+							<input
 								type="text"
 								name="result"
 								value={newSchedule.result}
 								onChange={handleInputChange}
 								placeholder="Result"
-								className="p-2 border border-gray-300 rounded-md focus:ring-1 focus:ring-purple-500 focus:border-transparent focus:outline-red-500"
+								className="p-2 border border-gray-300 rounded-md focus:ring-1 focus:ring-purple-500 focus:border-transparent focus:outline-red-500 col-span-2"
 								required
 							/>
 						</div>
