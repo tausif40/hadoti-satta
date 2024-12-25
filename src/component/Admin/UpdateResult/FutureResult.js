@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { BASE_URL } from '../../../app.url';
+import moment from 'moment';
 
 function FutureResult({ toggle }) {
 	const [ schedules, setSchedules ] = useState([]);
@@ -74,7 +75,10 @@ function FutureResult({ toggle }) {
 						<div className="bg-white p-4 rounded-lg flex flex-col items-center">
 							<h2 className="text-xl font-semibold mb-2">{schedule.title}</h2>
 							<p className="text-lg font-bold text-purple-600">{schedule.result}</p>
-							<p className="text-gray-600">{schedule.timeLabel}: {schedule.time}</p>
+							<div className="mt-4 text-sm flex ">
+								<p className="text-gray-600">{schedule.timeLabel}: {schedule.time}</p> &nbsp;/&nbsp;
+								<p className="text-gray-600">Date: {moment(schedule.date).format('DD/MM/YYYY')}</p>
+							</div>
 						</div>
 						<div className='absolute top-2 right-2 cursor-pointer border rounded p-1 hover:bg-gray-200' onClick={() => deleteSchedules(schedule._id)}>
 							<img src="./assets/img/delete.png" alt="" className='w-5' />
