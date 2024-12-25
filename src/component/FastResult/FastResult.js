@@ -47,6 +47,18 @@ function LiveResult() {
 	const [ latestHadotiNight, setLatestHadotiNight ] = useState(null);
 	const token = sessionStorage.getItem("token");
 
+	const [ isRefreshing, setIsRefreshing ] = useState(false);
+
+	const handleRefresh = async () => {
+		// console.log(isRefreshing);
+		setIsRefreshing(true);
+		// await refresh();
+		// setIsRefreshing(false);
+		setIsRefreshing((prev) => !prev);
+		setTimeout(() => setIsRefreshing(false), 1000);
+	};
+
+
 	useEffect(() => {
 		const fetchSchedules = async () => {
 			try {
@@ -106,22 +118,47 @@ function LiveResult() {
 						refresh={setToggle}
 					/>
 				))} */}
-				<ScheduleCard
-					// key={index}
-					title={latestHadotiDay?.title}
-					timeLabel={latestHadotiDay?.timeLabel}
-					time={latestHadotiDay?.time}
-					result={latestHadotiDay?.result}
-					refresh={setToggle}
-				/>
-				<ScheduleCard
-					// key={index}
-					title={latestHadotiNight?.title}
-					timeLabel={latestHadotiNight?.timeLabel}
-					time={latestHadotiNight?.time}
-					result={latestHadotiNight?.result}
-					refresh={setToggle}
-				/>
+				<div className="w-full max-w-4xl p-1 rounded-lg bg-gradient-to-br from-pink-500 to-orange-500 relative overflow-hidden">
+					<div className="bg-gradient-to-br from-purple-800 via-pink-500 to-orange-300 rounded-md p-4 text-center">
+						<h2 className="text-white text-2xl font-bold uppercase tracking-wider mb-1 drop-shadow-md">
+							Hadoti Day
+						</h2>
+						<p className="text-gray-100 font-semibold text-2xl py-3">
+							{latestHadotiDay?.result ? latestHadotiDay?.result : '_ _ _ _ _'}
+						</p>
+						{/* <p className="text-white text-lg">
+					{timeLabel}: <span className="font-semibold text-yellow-300 drop-shadow-md">{time}</span>
+				</p> */}
+					</div>
+					<button
+						className='absolute top-4 right-4 shadow-sm px-2 py-1 rounded-md bg-[#931c2c] hover:bg-[#6e1d4f] text-white font-light text-sm flex gap-2 items-center transition-all'
+						onClick={handleRefresh}
+					>
+						<p> {isRefreshing ? 'Refreshing..' : 'Refresh'}</p>
+						<p className={`mt-[3px] ${isRefreshing ? 'animate-spin' : ''}`}><LuRefreshCw size={14} /></p>
+					</button>
+				</div>
+
+				<div className="w-full max-w-4xl p-1 rounded-lg bg-gradient-to-br from-pink-500 to-orange-500 relative overflow-hidden">
+					<div className="bg-gradient-to-br from-purple-800 via-pink-500 to-orange-300 rounded-md p-4 text-center">
+						<h2 className="text-white text-2xl font-bold uppercase tracking-wider mb-1 drop-shadow-md">
+							Hadoti Night
+						</h2>
+						<p className="text-gray-100 font-semibold text-2xl py-3">
+							{latestHadotiNight?.result ? latestHadotiNight?.result : '_ _ _ _ _'}
+						</p>
+						{/* <p className="text-white text-lg">
+					{timeLabel}: <span className="font-semibold text-yellow-300 drop-shadow-md">{time}</span>
+				</p> */}
+					</div>
+					<button
+						className='absolute top-4 right-4 shadow-sm px-2 py-1 rounded-md bg-[#931c2c] hover:bg-[#6e1d4f] text-white font-light text-sm flex gap-2 items-center transition-all'
+						onClick={handleRefresh}
+					>
+						<p> {isRefreshing ? 'Refreshing..' : 'Refresh'}</p>
+						<p className={`mt-[3px] ${isRefreshing ? 'animate-spin' : ''}`}><LuRefreshCw size={14} /></p>
+					</button>
+				</div>
 				{/* {schedules && schedules?.length === 0 ? <p className='text-white text-2xl font-bold m-auto'>No Result Available</p> : ''} */}
 				{/* {loading && <p className='text-white text-2xl font-bold m-auto'>Wait...</p>} */}
 			</div>
