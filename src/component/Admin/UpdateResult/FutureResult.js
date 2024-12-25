@@ -77,7 +77,7 @@ function FutureResult({ toggle }) {
 							<p className="text-lg font-bold text-purple-600">{schedule.result}</p>
 							<div className="mt-4 text-sm flex ">
 								<p className="text-gray-600">{schedule.timeLabel}: {schedule.time}</p> &nbsp;/&nbsp;
-								<p className="text-gray-600">Date: {moment(schedule.date).format('DD/MM/YYYY')}</p>
+								<p className="text-gray-600">Date: {moment(schedule.date).format('DD-MM-YYYY')}</p>
 							</div>
 						</div>
 						<div className='absolute top-2 right-2 cursor-pointer border rounded p-1 hover:bg-gray-200' onClick={() => deleteSchedules(schedule._id)}>
