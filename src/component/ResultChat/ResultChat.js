@@ -36,7 +36,7 @@ const FormattedResult = ({ result }) => {
 
 	const { first, middle, last } = parseResult(result);
 	return (
-		<div className="text-xl w-44">
+		<div className="text-xl w-36">
 			<div className="grid grid-cols-3 text-center">
 				<div className="col-span-1">{first[ 0 ] || '*'}</div>
 				<div className="col-span-1"></div>
@@ -89,14 +89,14 @@ const ResultChat = () => {
 			<div className="text-center bg-red-300 text-gray-800 p-3">
 				<p className="text-2xl font-bold">Hadoti Results Chart</p>
 			</div>
-			<div className="max-w-7xl w-full px-2 md:px-8 lg:px-16 m-auto">
+			<div className="max-w-6xl w-full px-2 md:px-8 lg:px-16 m-auto">
 				<div className="min-w-full overflow-x-auto border my-4 pb-4">
 					<div className="min-w-[1150px]">
 						{data?.map((dayData, index) => (
 							<div key={index} className="whitespace-nowrap text-ellipsis">
-								<div className="flex gap-4 px-4 py-2 items-center border-b">
+								<div className="flex gap-4 px-4 py-1 items-center border-b">
 									<div className="font-semibold">
-										<p className="min-w-max w-56 py-1 px-8 text-center text-xl">
+										<p className="min-w-max w-44 py-1 px-8 text-center text-xl">
 											{dayData?._id && formatDate(dayData._id)}
 										</p>
 									</div>

@@ -17,7 +17,7 @@ const ScheduleCard = ({ title, timeLabel, time, result, refresh }) => {
 	};
 
 	return (
-		<div className="w-full max-w-4xl p-1 rounded-lg bg-gradient-to-br from-pink-500 to-orange-500 relative overflow-hidden">
+		<div className="w-full max-w-4xl p-1 rounded-lg bg-gradient-to-br from-pink-500 to-orange-500 sm:relative overflow-hidden">
 			<div className="bg-gradient-to-br from-purple-800 via-pink-500 to-orange-300 rounded-md p-4 text-center">
 				<h2 className="text-white text-2xl font-bold uppercase tracking-wider mb-1 drop-shadow-md">
 					{title}
@@ -28,14 +28,27 @@ const ScheduleCard = ({ title, timeLabel, time, result, refresh }) => {
 				{/* <p className="text-white text-lg">
 					{timeLabel}: <span className="font-semibold text-yellow-300 drop-shadow-md">{time}</span>
 				</p> */}
-			</div>
+			<div className='hidden sm:block'>
 			<button
 				className='absolute top-4 right-4 shadow-sm px-2 py-1 rounded-md bg-[#931c2c] hover:bg-[#6e1d4f] text-white font-light text-sm flex gap-2 items-center transition-all'
 				onClick={handleRefresh}
-			>
+				>
 				<p> {isRefreshing ? 'Refreshing..' : 'Refresh'}</p>
 				<p className={`mt-[3px] ${isRefreshing ? 'animate-spin' : ''}`}><LuRefreshCw size={14} /></p>
 			</button>
+			</div>
+
+			<div className='sm:hidden block'>
+			<button
+				className='m-auto mt-2 shadow-sm px-2 py-1 rounded-md bg-[#931c2c] hover:bg-[#6e1d4f] text-white font-light text-sm flex gap-2 items-center transition-all'
+				onClick={handleRefresh}
+				>
+				<p> {isRefreshing ? 'Refreshing..' : 'Refresh'}</p>
+				<p className={`mt-[3px] ${isRefreshing ? 'animate-spin' : ''}`}><LuRefreshCw size={14} /></p>
+			</button>
+			</div>
+			</div>
+			
 		</div>
 	);
 };
@@ -69,21 +82,18 @@ function LiveResult() {
 					},
 				}).then((response) => {
 					console.log(response);
-					const sortedData = response?.data?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+					// const sortedData = response?.data?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
-					// Get the latest Hadoti Day entry
-					const latestHadotiDay = sortedData.find(item => item.title === "Hadoti Day");
+					// const latestHadotiDay = sortedData.find(item => item.title === "Hadoti Day");
 
-					// Get the latest Hadoti Night entry
-					const latestHadotiNight = sortedData.find(item => item.title === "Hadoti Night");
+					// const latestHadotiNight = sortedData.find(item => item.title === "Hadoti Night");
 
-					// Print the latest data for Hadoti Day and Hadoti Night
-					console.log("Latest Hadoti Day:", latestHadotiDay);
-					console.log("Latest Hadoti Night:", latestHadotiNight);
-					// setLatestResults(latestTwo);
-					setLatestHadotiDay(latestHadotiDay);
-					setLatestHadotiNight(latestHadotiNight);
-					// setSchedules(response.data);
+					// console.log("Latest Hadoti Day:", latestHadotiDay);
+					// console.log("Latest Hadoti Night:", latestHadotiNight);
+					// // setLatestResults(latestTwo);
+					// setLatestHadotiDay(latestHadotiDay);
+					// setLatestHadotiNight(latestHadotiNight);
+					setSchedules(response.data);
 				}).catch((error) => {
 					console.log(error);
 				});
@@ -102,13 +112,13 @@ function LiveResult() {
 
 	return (
 		<div className="resultBg border my-8">
-			<p className="liveHeading flex justify-center items-center py-2 gap-4 text-2xl font-medium text-red-800">
+			<p className="liveHeading flex justify-center items-center px-4 py-2 gap-4 text-xl sm:text-2xl font-medium text-red-800">
 				<img src="/assets/img/zap.png" alt="" className="w-10" />
-				<p>Fastest Result Updates</p>
+				<p className='text-center'>Fastest Result Updates</p>
 				<img src="/assets/img/zap.png" alt="" className="w-10" />
 			</p>
 			<div className="container flex flex-col gap-5 items-center justify-center py-10">
-				{/* {schedules?.map((schedule, index) => (
+				{schedules?.map((schedule, index) => (
 					<ScheduleCard
 						key={index}
 						title={schedule.title}
@@ -117,48 +127,8 @@ function LiveResult() {
 						result={schedule.result}
 						refresh={setToggle}
 					/>
-				))} */}
-				<div className="w-full max-w-4xl p-1 rounded-lg bg-gradient-to-br from-pink-500 to-orange-500 relative overflow-hidden">
-					<div className="bg-gradient-to-br from-purple-800 via-pink-500 to-orange-300 rounded-md p-4 text-center">
-						<h2 className="text-white text-2xl font-bold uppercase tracking-wider mb-1 drop-shadow-md">
-							Hadoti Day
-						</h2>
-						<p className="text-gray-100 font-semibold text-2xl py-3">
-							{latestHadotiDay?.result ? latestHadotiDay?.result : '_ _ _ _ _'}
-						</p>
-						{/* <p className="text-white text-lg">
-					{timeLabel}: <span className="font-semibold text-yellow-300 drop-shadow-md">{time}</span>
-				</p> */}
-					</div>
-					<button
-						className='absolute top-4 right-4 shadow-sm px-2 py-1 rounded-md bg-[#931c2c] hover:bg-[#6e1d4f] text-white font-light text-sm flex gap-2 items-center transition-all'
-						onClick={handleRefresh}
-					>
-						<p> {isRefreshing ? 'Refreshing..' : 'Refresh'}</p>
-						<p className={`mt-[3px] ${isRefreshing ? 'animate-spin' : ''}`}><LuRefreshCw size={14} /></p>
-					</button>
-				</div>
-
-				<div className="w-full max-w-4xl p-1 rounded-lg bg-gradient-to-br from-pink-500 to-orange-500 relative overflow-hidden">
-					<div className="bg-gradient-to-br from-purple-800 via-pink-500 to-orange-300 rounded-md p-4 text-center">
-						<h2 className="text-white text-2xl font-bold uppercase tracking-wider mb-1 drop-shadow-md">
-							Hadoti Night
-						</h2>
-						<p className="text-gray-100 font-semibold text-2xl py-3">
-							{latestHadotiNight?.result ? latestHadotiNight?.result : '_ _ _ _ _'}
-						</p>
-						{/* <p className="text-white text-lg">
-					{timeLabel}: <span className="font-semibold text-yellow-300 drop-shadow-md">{time}</span>
-				</p> */}
-					</div>
-					<button
-						className='absolute top-4 right-4 shadow-sm px-2 py-1 rounded-md bg-[#931c2c] hover:bg-[#6e1d4f] text-white font-light text-sm flex gap-2 items-center transition-all'
-						onClick={handleRefresh}
-					>
-						<p> {isRefreshing ? 'Refreshing..' : 'Refresh'}</p>
-						<p className={`mt-[3px] ${isRefreshing ? 'animate-spin' : ''}`}><LuRefreshCw size={14} /></p>
-					</button>
-				</div>
+				))}
+			
 				{/* {schedules && schedules?.length === 0 ? <p className='text-white text-2xl font-bold m-auto'>No Result Available</p> : ''} */}
 				{/* {loading && <p className='text-white text-2xl font-bold m-auto'>Wait...</p>} */}
 			</div>
