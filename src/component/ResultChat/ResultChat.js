@@ -93,19 +93,19 @@ const ResultChat = () => {
 				<div className="min-w-full overflow-x-auto border my-4 pb-4">
 					<div className="min-w-[1150px]">
 						{data?.map((dayData, index) => (
-							<div key={index}>
-								<div className="flex gap-4 px-4 items-center border-b">
+							<div key={index} className="whitespace-nowrap overflow-hidden text-ellipsis">
+								<div className="flex gap-4 px-4 py-2 items-center border-b overflow-x-auto">
 									<div className="font-semibold">
-										<p className=" min-w-36 px-1 py-1 lg:px-8 text-center text-xl">
+										<p className="min-w-max py-1 px-8 text-center text-xl">
 											{dayData?._id && formatDate(dayData._id)}
 										</p>
 									</div>
-									<div className="grid grid-cols-4 w-full">
+									<div className="flex w-full">
 										{dayData?.schedules?.map((entry, entryIndex) => (
 											<React.Fragment key={entryIndex}>
-												<div>
+												<div className="whitespace-nowrap overflow-hidden text-ellipsis">
 													<FormattedResult result={entry?.result} />
-												</div>	
+												</div>
 											</React.Fragment>
 										))}
 									</div>

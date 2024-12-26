@@ -7,23 +7,21 @@ import { useNavigate } from 'react-router-dom';
 
 const UpdateResult = () => {
 	const navigate = useNavigate();
-	const [ schedules, setSchedules ] = useState([]);
 	const [ toggle, setToggle ] = useState(false);
+	const [ error, setError ] = useState({});
 	const [ newSchedule, setNewSchedule ] = useState({
 		title: '',
-		timeLabel: '',
 		time: '',
 		result: '',
 	});
 
 	const token = sessionStorage.getItem("token");
 	useEffect(() => {
-		const token = sessionStorage.getItem('token')
+		const token = sessionStorage.getItem('token');
 		if (!token) {
-			navigate('/admin')
+			navigate('/admin');
 		}
-	}, [])
-
+	}, [ token ]);
 
 	function convertTo12HourFormat(time24) {
 		const [ hours, minutes ] = time24.split(':');
@@ -34,19 +32,77 @@ const UpdateResult = () => {
 		return `${hoursInt}:${minutes} ${ampm}`;
 	}
 
+	const formatResult = (value, isBackspace) => {
+		value = value.replace(/\D/g, '');
+		value = value.slice(0, 8);
+		if (value.length > 2) {
+			value = value.slice(0, 3) + '-' + value.slice(3);
+		}
+		if (value.length > 5) {
+			value = value.slice(0, 6) + '-' + value.slice(6);
+		}
+		if (isBackspace) {
+			value = value.replace(/-$/, '');
+		}
+
+		return value;
+	};
+
+	const validateField = (name, value) => {
+		let errorMessage = '';
+		if (name === 'title' && !value) {
+			errorMessage = 'Title is required';
+		} else if (name === 'time' && !value) {
+			errorMessage = 'Time is required';
+		} else if (name === 'result' && !value) {
+			errorMessage = 'Result is required';
+		}
+		return errorMessage;
+	};
+
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
-		setNewSchedule((prev) => ({ ...prev, [ name ]: value }));
+		const isBackspace = e.nativeEvent.inputType === 'deleteContentBackward';
+		let formattedValue = value;
+
+		if (name === 'result') {
+			formattedValue = formatResult(value, isBackspace);
+		}
+
+		const errorMessage = validateField(name, formattedValue);
+		setError((prev) => ({ ...prev, [ name ]: errorMessage }));
+		setNewSchedule((prev) => ({ ...prev, [ name ]: formattedValue }));
 	};
 
 	const handleSubmit = async (e) => {
-		const toastId = toast.loading("Updating...");
 		e.preventDefault();
 
-		const time12 = convertTo12HourFormat(newSchedule.time);
+		console.log(newSchedule?.result);
+		const regex = /^\d{3}-\d{2}-\d{3}$/;
+		if (!regex.test(newSchedule?.result)) {
+			const errorMessage = 'Result must be in the format 123-12-123';
+			setError((prev) => ({ ...prev, result: errorMessage }));
+			return;
+		}
 
+		const toastId = toast.loading("Updating...");
+
+		const newErrors = {
+			title: validateField('title', newSchedule.title),
+			time: validateField('time', newSchedule.time),
+			result: validateField('result', newSchedule.result),
+		};
+
+		setError(newErrors);
+		if (Object.values(newErrors).some((err) => err)) {
+			toast.error("Validation error:", { id: toastId });
+			return;
+		}
+
+		const time12 = convertTo12HourFormat(newSchedule.time);
 		const scheduleData = { ...newSchedule, time: time12 };
 		console.log(scheduleData);
+
 		await axios.post(`${BASE_URL}/schedules`, scheduleData, {
 			headers: {
 				'Content-Type': 'application/json',
@@ -55,7 +111,8 @@ const UpdateResult = () => {
 		}).then((response) => {
 			console.log('API Response:', response.data);
 			setToggle((pre) => !pre);
-			setNewSchedule({ title: '', timeLabel: '', time: '', date: '', result: '' });
+			setNewSchedule({ title: '', time: '', result: '' });
+			setError({});
 			toast.success("Update successful!", { id: toastId });
 		}).catch((error) => {
 			console.log(error);
@@ -73,53 +130,55 @@ const UpdateResult = () => {
 
 					<form onSubmit={handleSubmit} className="mb-8">
 						<div className="grid grid-cols-2 gap-4">
-							<select
-								name="title"
-								value={newSchedule.title}
-								onChange={handleInputChange}
-								className="p-2 border border-gray-300 rounded-md focus:ring-1 focus:ring-purple-500 focus:border-transparent focus:outline-red-500"
-								required
-							>
-								<option value="" disabled>Select Title</option>
-								<option value="Hadoti Day">Hadoti Day</option>
-								<option value="Hadoti Night">Hadoti Night</option>
-							</select>
-							<select
-								name="timeLabel"
-								value={newSchedule.timeLabel}
-								onChange={handleInputChange}
-								className="p-2 border border-gray-300 rounded-md focus:ring-1 focus:ring-purple-500 focus:border-transparent focus:outline-red-500"
-								required
-							>
-								<option value="" disabled>Time Label</option>
-								<option value="Open">Open</option>
-								<option value="Close">Close</option>
-							</select>
-							<input
-								type="time"
-								name="time"
-								value={newSchedule.time}
-								onChange={handleInputChange}
-								className="p-2 border border-gray-300 rounded-md focus:ring-1 focus:ring-purple-500 focus:border-transparent focus:outline-red-500"
-								required
-							/>
-							<input
-								type="date"
-								name="date"
-								value={newSchedule.date}
-								onChange={handleInputChange}
-								className="p-2 border border-gray-300 rounded-md focus:ring-1 focus:ring-purple-500 focus:border-transparent focus:outline-red-500"
-								required
-							/>
-							<input
-								type="text"
-								name="result"
-								value={newSchedule.result}
-								onChange={handleInputChange}
-								placeholder="Result"
-								className="p-2 border border-gray-300 rounded-md focus:ring-1 focus:ring-purple-500 focus:border-transparent focus:outline-red-500 col-span-2"
-								required
-							/>
+							<div>
+								<label htmlFor="title" className="block text-sm font-medium text-gray-700">Title</label>
+								<select
+									id="title"
+									name="title"
+									value={newSchedule.title}
+									onChange={handleInputChange}
+									className="p-2 border border-gray-300 rounded-md focus:ring-1 focus:ring-purple-500 focus:border-transparent focus:outline-red-500 w-full"
+								>
+									<option value="" disabled>Select Title</option>
+									<option value="Hadoti Day">Hadoti Day</option>
+									<option value="Hadoti Night">Hadoti Night</option>
+								</select>
+								{error.title && (
+									<p className="text-red-500 text-sm mt-1">{error.title}</p>
+								)}
+							</div>
+
+							<div>
+								<label htmlFor="time" className="block text-sm font-medium text-gray-700">Time</label>
+								<input
+									id="time"
+									type="time"
+									name="time"
+									value={newSchedule.time}
+									onChange={handleInputChange}
+									className="p-2 border border-gray-300 rounded-md focus:ring-1 focus:ring-purple-500 focus:border-transparent focus:outline-red-500 w-full"
+								/>
+								{error.time && (
+									<p className="text-red-500 text-sm mt-1">{error.time}</p>
+								)}
+							</div>
+
+							<div className="col-span-2">
+								<label htmlFor="result" className="block text-sm font-medium text-gray-700">Result</label>
+								<input
+									id="result"
+									type="text"
+									name="result"
+									value={newSchedule.result}
+									onChange={handleInputChange}
+									maxLength="10"
+									placeholder="Result"
+									className="p-2 w-full border border-gray-300 rounded-md focus:ring-1 focus:ring-purple-500 focus:border-transparent focus:outline-red-500"
+								/>
+								{error.result && (
+									<p className="text-red-500 text-sm mt-1">{error.result}</p>
+								)}
+							</div>
 						</div>
 						<button
 							type="submit"
@@ -131,7 +190,7 @@ const UpdateResult = () => {
 					<FutureResult toggle={toggle} />
 				</div>
 			</div>
-		</div >
+		</div>
 	);
 };
 
