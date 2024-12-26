@@ -35,7 +35,7 @@ const FormattedResult = ({ result }) => {
 
 	const { first, middle, last } = parseResult(result);
 	return (
-		<div className="text-md sm:text-xl w-28 leading-3 py-2 px-2 text-gray-800">
+		<div className="text-md sm:text-xl w-28 leading-3 py-2 px-2 text-gray-800 border-b md:border-b-0">
 			<div className="grid grid-cols-3 text-center">
 				<div className="textShadow font-semibold">{first[ 0 ] || '*'}</div>
 				<div className=""></div>
@@ -95,12 +95,12 @@ const ResultChat = () => {
 							{data?.map((dayData, index) => (
 								<div key={index} className="whitespace-nowrap text-ellipsis">
 									<div className="flex gap-2 md:gap-4 px-4 items-center border-b">
-										<div className="font-semibold">
+										<div className="font-semibold ">
 											<p className="min-w-max sm:w-28 md:w-24 sm:px-2 md:px-4 text-center text-md sm:text-xl textShadow text-slate-800">
 												{dayData?._id && formatDate(dayData._id)}
 											</p>
 										</div>
-										<div className="flex w-full">
+										<div className="flex w-ful">
 											{dayData?.schedules?.map((entry, entryIndex) => (
 												<React.Fragment key={entryIndex}>
 													<div className="">
