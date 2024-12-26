@@ -36,7 +36,7 @@ const FormattedResult = ({ result }) => {
 
 	const { first, middle, last } = parseResult(result);
 	return (
-		<div className="text-xl w-28 leading-3 py-2 px-2 text-gray-800">
+		<div className="text-md sm:text-xl w-28 leading-3 py-2 px-2 text-gray-800">
 			<div className="grid grid-cols-3 text-center">
 				<div className="textShadow font-semibold">{first[ 0 ] || '*'}</div>
 				<div className=""></div>
@@ -86,32 +86,34 @@ const ResultChat = () => {
 
 	return (
 		<>
-			<div className="text-center bg-red-300 text-gray-800 p-3">
-				<p className="text-xl sm:text-2xl font-semibold sm:font-bold">Hadoti Results Chart</p>
-			</div>
-			<div className="max-w-4xl w-full px-2 md:px-8 lg:px-16 m-auto">
-				<div className="min-w-full overflow-x-auto border my-4 pb-4">
-					<div className="min-w-[1150px]">
-						{data?.map((dayData, index) => (
-							<div key={index} className="whitespace-nowrap text-ellipsis">
-								<div className="flex gap-2 md:gap-4 px-4 py-1 items-center border-b">
-									<div className="font-semibold">
-										<p className="min-w-max w-28 md:w-44 py-1 px-2 md:px-8 text-center text-md sm:text-xl textShadow text-slate-800">
-											{dayData?._id && formatDate(dayData._id)}
-										</p>
-									</div>
-									<div className="flex w-full">
-										{dayData?.schedules?.map((entry, entryIndex) => (
-											<React.Fragment key={entryIndex}>
-												<div className="">
-													<FormattedResult result={entry?.result} />
-												</div>
-											</React.Fragment>
-										))}
+			<div className='bg-gray-100'>
+				<div className="text-center bg-red-300 text-gray-800 p-3">
+					<p className="text-xl sm:text-2xl font-semibold sm:font-bold">Hadoti Results Chart</p>
+				</div>
+				<div className="max-w-2xl sm:max-w-3xl px-2 md:px-8 lg:px-16 m-auto">
+					<div className="min-w-full overflow-x-auto border my-4 pb-4 bg-white">
+						<div className="w-full">
+							{data?.map((dayData, index) => (
+								<div key={index} className="whitespace-nowrap text-ellipsis">
+									<div className="flex gap-2 md:gap-4 px-4 items-center border-b">
+										<div className="font-semibold">
+											<p className="min-w-max sm:w-28 md:w-24 sm:px-2 md:px-4 text-center text-md sm:text-xl textShadow text-slate-800">
+												{dayData?._id && formatDate(dayData._id)}
+											</p>
+										</div>
+										<div className="flex w-full">
+											{dayData?.schedules?.map((entry, entryIndex) => (
+												<React.Fragment key={entryIndex}>
+													<div className="">
+														<FormattedResult result={entry?.result} />
+													</div>
+												</React.Fragment>
+											))}
+										</div>
 									</div>
 								</div>
-							</div>
-						))}
+							))}
+						</div>
 					</div>
 				</div>
 			</div>

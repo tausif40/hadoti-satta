@@ -25,9 +25,6 @@ const ScheduleCard = ({ title, timeLabel, time, result, refresh }) => {
 				<p className="text-gray-100 font-semibold text-2xl py-3">
 					{result ? result : '_ _ _ _ _'}
 				</p>
-				{/* <p className="text-white text-lg">
-					{timeLabel}: <span className="font-semibold text-yellow-300 drop-shadow-md">{time}</span>
-				</p> */}
 				<div className='hidden sm:block'>
 					<button
 						className='absolute top-4 right-4 shadow-sm px-2 py-1 rounded-md bg-[#931c2c] hover:bg-[#6e1d4f] text-white font-light text-sm flex gap-2 items-center transition-all'
@@ -48,7 +45,6 @@ const ScheduleCard = ({ title, timeLabel, time, result, refresh }) => {
 					</button>
 				</div>
 			</div>
-
 		</div>
 	);
 };
@@ -81,18 +77,7 @@ function LiveResult() {
 						authorization: `Bearer ${token}`
 					},
 				}).then((response) => {
-					console.log(response);
-					// const sortedData = response?.data?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-
-					// const latestHadotiDay = sortedData.find(item => item.title === "Hadoti Day");
-
-					// const latestHadotiNight = sortedData.find(item => item.title === "Hadoti Night");
-
-					// console.log("Latest Hadoti Day:", latestHadotiDay);
-					// console.log("Latest Hadoti Night:", latestHadotiNight);
-					// // setLatestResults(latestTwo);
-					// setLatestHadotiDay(latestHadotiDay);
-					// setLatestHadotiNight(latestHadotiNight);
+					// console.log(response);
 					setSchedules(response.data);
 				}).catch((error) => {
 					console.log(error);
@@ -103,9 +88,6 @@ function LiveResult() {
 			}
 		};
 		fetchSchedules();
-
-
-
 	}, [ toggle ]);
 
 
@@ -128,9 +110,6 @@ function LiveResult() {
 						refresh={setToggle}
 					/>
 				))}
-
-				{/* {schedules && schedules?.length === 0 ? <p className='text-white text-2xl font-bold m-auto'>No Result Available</p> : ''} */}
-				{/* {loading && <p className='text-white text-2xl font-bold m-auto'>Wait...</p>} */}
 			</div>
 		</div>
 	);
