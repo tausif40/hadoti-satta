@@ -62,10 +62,10 @@ export default function Faq() {
 							{faqs.map((faq, index) => (
 								<div
 									key={index}
-									className="bg-white/40 shadow-sm rounded-lg p-8 border border-gray-200 hover:bg-white/60"
+									className="bg-white/40 shadow-sm rounded-lg p-2 md:p-8 border border-gray-200 hover:bg-white/60"
 								>
 									{/* hover:scale-105 transform transition-transform duration-300 */}
-									<h2 className="text-xl font-bold text-gray-800 mb-6 flex items-center">
+									<h2 className="text-md font-semibold md:text-xl ms:font-bold text-gray-800 mb-6 flex items-center">
 										<span className="inline-block bg-purple-500 text-white rounded-full px-3 py-1 text-sm font-semibold mr-4">Q</span>
 										{faq.question}
 									</h2>
