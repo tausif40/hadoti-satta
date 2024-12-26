@@ -36,21 +36,21 @@ const FormattedResult = ({ result }) => {
 
 	const { first, middle, last } = parseResult(result);
 	return (
-		<div className="text-xl w-36">
+		<div className="text-xl w-28 leading-3 py-2 px-2 text-gray-800">
 			<div className="grid grid-cols-3 text-center">
-				<div className="col-span-1">{first[ 0 ] || '*'}</div>
-				<div className="col-span-1"></div>
-				<div className="col-span-1">{last[ 0 ] || '*'}</div>
+				<div className="textShadow font-semibold">{first[ 0 ] || '*'}</div>
+				<div className=""></div>
+				<div className="textShadow  font-semibold">{last[ 0 ] || '*'}</div>
 			</div>
 			<div className="grid grid-cols-3 text-center items-center">
-				<div className="col-span-1">{first[ 1 ] || '*'}</div>
-				<div className="col-span-1 text-3xl font-semibold">{middle || '*'}</div>
-				<div className="col-span-1">{last[ 1 ] || '*'}</div>
+				<div className="textShadow font-semibold">{first[ 1 ] || '*'}</div>
+				<div className="textShadow text-xl sm:text-3xl font-extrabold">{middle || '*'}</div>
+				<div className="textShadow font-semibold">{last[ 1 ] || '*'}</div>
 			</div>
 			<div className="grid grid-cols-3 text-center">
-				<div className="col-span-1">{first[ 2 ] || '*'}</div>
-				<div className="col-span-1"></div>
-				<div className="col-span-1">{last[ 2 ] || '*'}</div>
+				<div className="textShadow font-semibold">{first[ 2 ] || '*'}</div>
+				<div className=""></div>
+				<div className="textShadow font-semibold">{last[ 2 ] || '*'}</div>
 			</div>
 		</div>
 	);
@@ -68,7 +68,7 @@ const ResultChat = () => {
 						'Content-Type': 'application/json',
 					},
 				}).then((response) => {
-					console.log(response);
+					// console.log(response);
 					setData(response?.data);
 				}).catch((error) => {
 					console.log(error);
@@ -87,16 +87,16 @@ const ResultChat = () => {
 	return (
 		<>
 			<div className="text-center bg-red-300 text-gray-800 p-3">
-				<p className="text-2xl font-bold">Hadoti Results Chart</p>
+				<p className="text-xl sm:text-2xl font-semibold sm:font-bold">Hadoti Results Chart</p>
 			</div>
-			<div className="max-w-6xl w-full px-2 md:px-8 lg:px-16 m-auto">
+			<div className="max-w-4xl w-full px-2 md:px-8 lg:px-16 m-auto">
 				<div className="min-w-full overflow-x-auto border my-4 pb-4">
 					<div className="min-w-[1150px]">
 						{data?.map((dayData, index) => (
 							<div key={index} className="whitespace-nowrap text-ellipsis">
-								<div className="flex gap-4 px-4 py-1 items-center border-b">
+								<div className="flex gap-2 md:gap-4 px-4 py-1 items-center border-b">
 									<div className="font-semibold">
-										<p className="min-w-max w-44 py-1 px-8 text-center text-xl">
+										<p className="min-w-max w-28 md:w-44 py-1 px-2 md:px-8 text-center text-md sm:text-xl textShadow text-slate-800">
 											{dayData?._id && formatDate(dayData._id)}
 										</p>
 									</div>

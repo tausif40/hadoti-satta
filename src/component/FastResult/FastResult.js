@@ -28,27 +28,27 @@ const ScheduleCard = ({ title, timeLabel, time, result, refresh }) => {
 				{/* <p className="text-white text-lg">
 					{timeLabel}: <span className="font-semibold text-yellow-300 drop-shadow-md">{time}</span>
 				</p> */}
-			<div className='hidden sm:block'>
-			<button
-				className='absolute top-4 right-4 shadow-sm px-2 py-1 rounded-md bg-[#931c2c] hover:bg-[#6e1d4f] text-white font-light text-sm flex gap-2 items-center transition-all'
-				onClick={handleRefresh}
-				>
-				<p> {isRefreshing ? 'Refreshing..' : 'Refresh'}</p>
-				<p className={`mt-[3px] ${isRefreshing ? 'animate-spin' : ''}`}><LuRefreshCw size={14} /></p>
-			</button>
+				<div className='hidden sm:block'>
+					<button
+						className='absolute top-4 right-4 shadow-sm px-2 py-1 rounded-md bg-[#931c2c] hover:bg-[#6e1d4f] text-white font-light text-sm flex gap-2 items-center transition-all'
+						onClick={handleRefresh}
+					>
+						<p> {isRefreshing ? 'Refreshing..' : 'Refresh'}</p>
+						<p className={`mt-[3px] ${isRefreshing ? 'animate-spin' : ''}`}><LuRefreshCw size={14} /></p>
+					</button>
+				</div>
+
+				<div className='sm:hidden block'>
+					<button
+						className='m-auto mt-2 shadow-sm px-2 py-1 rounded-md bg-[#931c2c] hover:bg-[#6e1d4f] text-white font-light text-sm flex gap-2 items-center transition-all'
+						onClick={handleRefresh}
+					>
+						<p> {isRefreshing ? 'Refreshing..' : 'Refresh'}</p>
+						<p className={`mt-[3px] ${isRefreshing ? 'animate-spin' : ''}`}><LuRefreshCw size={14} /></p>
+					</button>
+				</div>
 			</div>
 
-			<div className='sm:hidden block'>
-			<button
-				className='m-auto mt-2 shadow-sm px-2 py-1 rounded-md bg-[#931c2c] hover:bg-[#6e1d4f] text-white font-light text-sm flex gap-2 items-center transition-all'
-				onClick={handleRefresh}
-				>
-				<p> {isRefreshing ? 'Refreshing..' : 'Refresh'}</p>
-				<p className={`mt-[3px] ${isRefreshing ? 'animate-spin' : ''}`}><LuRefreshCw size={14} /></p>
-			</button>
-			</div>
-			</div>
-			
 		</div>
 	);
 };
@@ -128,7 +128,7 @@ function LiveResult() {
 						refresh={setToggle}
 					/>
 				))}
-			
+
 				{/* {schedules && schedules?.length === 0 ? <p className='text-white text-2xl font-bold m-auto'>No Result Available</p> : ''} */}
 				{/* {loading && <p className='text-white text-2xl font-bold m-auto'>Wait...</p>} */}
 			</div>
