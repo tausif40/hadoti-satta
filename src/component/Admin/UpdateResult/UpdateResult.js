@@ -65,9 +65,9 @@ const UpdateResult = () => {
 		const isBackspace = e.nativeEvent.inputType === 'deleteContentBackward';
 		let formattedValue = value;
 
-		if (name === 'result') {
-			formattedValue = formatResult(value, isBackspace);
-		}
+		// if (name === 'result') {
+		// 	formattedValue = formatResult(value, isBackspace);
+		// }
 
 		const errorMessage = validateField(name, formattedValue);
 		setError((prev) => ({ ...prev, [ name ]: errorMessage }));
@@ -77,13 +77,13 @@ const UpdateResult = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		console.log(newSchedule?.result);
-		const regex = /^\d{3}-\d{2}-\d{3}$/;
-		if (!regex.test(newSchedule?.result)) {
-			const errorMessage = 'Result must be in the format 123-12-123';
-			setError((prev) => ({ ...prev, result: errorMessage }));
-			return;
-		}
+		// console.log(newSchedule?.result);
+		// const regex = /^\d{3}-\d{2}-\d{3}$/;
+		// if (!regex.test(newSchedule?.result)) {
+		// 	const errorMessage = 'Result must be in the format 123-12-123';
+		// 	setError((prev) => ({ ...prev, result: errorMessage }));
+		// 	return;
+		// }
 
 		const toastId = toast.loading("Updating...");
 
@@ -111,7 +111,7 @@ const UpdateResult = () => {
 		}).then((response) => {
 			console.log('API Response:', response.data);
 			setToggle((pre) => !pre);
-			setNewSchedule({ title: '', time: '', result: '' });
+			// setNewSchedule({ title: '', time: '', result: '' });
 			setError({});
 			toast.success("Update successful!", { id: toastId });
 		}).catch((error) => {
