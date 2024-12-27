@@ -18,7 +18,7 @@ const ScheduleCard = ({ title, timeLabel, time, result, refresh }) => {
 
 	return (
 		<div className="w-full max-w-4xl p-1 rounded-lg bg-gradient-to-br from-pink-500 to-orange-500 sm:relative overflow-hidden">
-			<div className="bg-gradient-to-br from-purple-800 via-pink-500 to-orange-300 rounded-md p-4 text-center">
+			<div className="bg-gradient-to-br from-purple-600 via-pink-500 to-orange-300 rounded-md p-4 text-center">
 				<h2 className="text-white text-2xl font-bold uppercase tracking-wider mb-1 drop-shadow-md">
 					{title}
 				</h2>
