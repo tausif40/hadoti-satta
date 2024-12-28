@@ -55,10 +55,9 @@ const ScheduleCard = ({ title, timeLabel, time, result, refresh }) => {
 
 function LiveResult() {
 	const [ toggle, setToggle ] = useState(false);
-	const [ schedules, setSchedules ] = useState([]);
-	const [ latestHadotiDay, setLatestHadotiDay ] = useState(null);
-	const [ latestHadotiNight, setLatestHadotiNight ] = useState(null);
-	const token = sessionStorage.getItem("token");
+	// const [ schedules, setSchedules ] = useState([]);
+	const [ hadotiDay, setHadotiDay ] = useState(null);
+	const [ hadotiNight, setHadotiNight ] = useState(null);
 
 	const [ isRefreshing, setIsRefreshing ] = useState(false);
 
@@ -74,26 +73,28 @@ function LiveResult() {
 
 	useEffect(() => {
 		const fetchSchedules = async () => {
-			try {
-				await axios.get(`${BASE_URL}/schedules`, {
-					headers: {
-						'Content-Type': 'application/json',
-						authorization: `Bearer ${token}`
-					},
-				}).then((response) => {
-					// console.log(response);
-					setSchedules(response.data);
-				}).catch((error) => {
-					console.log(error);
-				});
-			} catch (error) {
-				console.error('Error fetching schedules:', error);
-				toast.error('Network Error');
-			}
+			await axios.get(`${BASE_URL}/schedules`, {
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			}).then((response) => {
+				// console.log(response);
+				// setSchedules(response.data);
+				const result = response.data;
+
+				const day = result.find((item) => item.title === "Hadoti Day");
+				const night = result.find((item) => item.title === "Hadoti Night");
+
+				setHadotiDay(day);
+				setHadotiNight(night);
+
+			}).catch((error) => {
+				console.log(error);
+			});
 		};
+
 		fetchSchedules();
 	}, [ toggle ]);
-
 
 
 	return (
@@ -104,16 +105,17 @@ function LiveResult() {
 				<img src="/assets/img/zap.png" alt="" className="w-10" />
 			</p>
 			<div className="container flex flex-col gap-5 items-center justify-center py-10">
-				{schedules?.map((schedule, index) => (
-					<ScheduleCard
-						key={index}
-						title={schedule.title}
-						timeLabel={schedule.timeLabel}
-						time={schedule.time}
-						result={schedule.result}
-						refresh={setToggle}
-					/>
-				))}
+				<ScheduleCard
+					title='Hadoti Day'
+					result={hadotiDay?.result}
+					refresh={setToggle}
+				/>
+				<ScheduleCard
+					title='Hadoti Night'
+					result={hadotiNight?.result}
+					refresh={setToggle}
+				/>
+
 			</div>
 		</div>
 	);

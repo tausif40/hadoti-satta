@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { BASE_URL } from '../../app.url';
+import Loader from '../Loader/Loader';
 
 
 const FormattedResult = ({ result }) => {
@@ -58,9 +59,11 @@ const FormattedResult = ({ result }) => {
 
 const ResultChat = () => {
 	const [ data, setData ] = useState([])
+	const [ loading, setIsLoading ] = useState(false)
 
 	useEffect(() => {
 		const fetchChat = async () => {
+			setIsLoading(true);
 			try {
 				await axios.get(`${BASE_URL}/monthly-schedules`, {
 					headers: {
@@ -69,11 +72,14 @@ const ResultChat = () => {
 				}).then((response) => {
 					// console.log(response);
 					setData(response?.data);
+					setIsLoading(false);
 				}).catch((error) => {
 					console.log(error);
+					setIsLoading(false);
 				});
 			} catch (error) {
 				console.error('Error fetching schedules:', error);
+				setIsLoading(false);
 			}
 		};
 		fetchChat();
@@ -92,26 +98,29 @@ const ResultChat = () => {
 				<div className="max-w-2xl sm:max-w-3xl px-2 md:px-8 lg:px-16 m-auto">
 					<div className="min-w-full overflow-x-auto border my-4 pb-4 bg-white">
 						<div className="w-full">
-							{data?.map((dayData, index) => (
-								<div key={index} className="whitespace-nowrap text-ellipsis">
-									<div className="flex gap-2 md:gap-4 px-4 items-center border-b">
-										<div className="font-semibold ">
-											<p className="min-w-max sm:w-28 md:w-24 sm:px-2 md:px-4 text-center text-md sm:text-xl textShadow text-slate-800">
-												{dayData?._id && formatDate(dayData._id)}
-											</p>
-										</div>
-										<div className="flex w-ful">
-											{dayData?.schedules?.map((entry, entryIndex) => (
-												<React.Fragment key={entryIndex}>
-													<div className="">
-														<FormattedResult result={entry?.result} />
-													</div>
-												</React.Fragment>
-											))}
+
+							{loading ? <p className='m-auto text-center'><Loader /></p> :
+								data?.map((dayData, index) => (
+									<div key={index} className="whitespace-nowrap text-ellipsis">
+										<div className="flex gap-2 md:gap-4 px-4 items-center border-b">
+											<div className="font-semibold ">
+												<p className="min-w-max sm:w-28 md:w-24 sm:px-2 md:px-4 text-center text-md sm:text-xl textShadow text-slate-800">
+													{dayData?._id && formatDate(dayData._id)}
+												</p>
+											</div>
+											<div className="flex w-ful">
+												{dayData?.schedules?.map((entry, entryIndex) => (
+													<React.Fragment key={entryIndex}>
+														<div className="">
+															<FormattedResult result={entry?.result} />
+														</div>
+													</React.Fragment>
+												))}
+											</div>
 										</div>
 									</div>
-								</div>
-							))}
+								))}
+
 						</div>
 					</div>
 				</div>
