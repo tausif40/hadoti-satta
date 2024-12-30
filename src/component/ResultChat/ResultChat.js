@@ -7,52 +7,57 @@ import Loader from '../Loader/Loader';
 const FormattedResult = ({ result }) => {
 	const parseResult = (input) => {
 		const parts = input.split('-');
-		let first = '', middle = '', last = '';
+		let first = '*', middle = '*', last = '*';
 
-		if (parts.length === 1) {
-			// Case for single number (e.g., "222")
-			first = parts[ 0 ].slice(0, 3);
-			middle = parts[ 0 ].slice(3, 5);
-			last = parts[ 0 ].slice(5);
+		// Ensure the input is converted into "***-**-***" format
+		if (parts.length === 3) {
+			first = parts[ 0 ].slice(0, 3).padEnd(3, '*');
+			middle = parts[ 1 ].slice(0, 2).padEnd(2, '*');
+			last = parts[ 2 ].slice(0, 3).padEnd(3, '*');
 		} else if (parts.length === 2) {
-			// Case for two parts (e.g., "1-3" or "123-36")
-			if (parts[ 0 ].length === 1) {
-				first = parts[ 0 ].padEnd(3, '*');
-				last = parts[ 1 ].padEnd(3, '*');
-			} else {
-				first = parts[ 0 ].slice(0, 3);
-				middle = parts[ 0 ].slice(3);
-				last = parts[ 1 ].padEnd(3, '*');
-			}
-		} else if (parts.length === 3) {
-			// Case for three parts (e.g., "403-77-389" or "123-562-69")
-			first = parts[ 0 ].padEnd(3, '*');
-			middle = parts[ 1 ].slice(0, 2);
-			last = parts[ 2 ].padEnd(3, '*');
+			first = parts[ 0 ].slice(0, 3).padEnd(3, '*');
+			middle = parts[ 1 ].slice(0, 2).padEnd(2, '*');
+			last = parts[ 1 ].slice(2).padEnd(3, '*');
+		} else if (parts.length === 1) {
+			first = parts[ 0 ].slice(0, 3).padEnd(3, '*');
+			middle = parts[ 0 ].slice(3, 5).padEnd(2, '*');
+			last = parts[ 0 ].slice(5).padEnd(3, '*');
 		}
 
 		return { first, middle, last };
 	};
 
 	const { first, middle, last } = parseResult(result);
+	// console.log(parseFloat(first));
+
+
 	return (
-		<div className="text-md sm:text-xl w-28 leading-3 py-2 px-2 text-gray-800 border-b md:border-b-0">
-			<div className="grid grid-cols-3 text-center">
-				<div className="textShadow font-semibold">{first[ 0 ] || '*'}</div>
-				<div className=""></div>
-				<div className="textShadow  font-semibold">{last[ 0 ] || '*'}</div>
-			</div>
-			<div className="grid grid-cols-3 text-center items-center">
-				<div className="textShadow font-semibold">{first[ 1 ] || '*'}</div>
-				<div className="textShadow text-xl sm:text-3xl font-extrabold">{middle || '*'}</div>
-				<div className="textShadow font-semibold">{last[ 1 ] || '*'}</div>
-			</div>
-			<div className="grid grid-cols-3 text-center">
-				<div className="textShadow font-semibold">{first[ 2 ] || '*'}</div>
-				<div className=""></div>
-				<div className="textShadow font-semibold">{last[ 2 ] || '*'}</div>
-			</div>
-		</div>
+		<>
+			{!isNaN(parseFloat(first)) || !isNaN(parseFloat(last)) ? (
+				<div className="text-md sm:text-xl w-28 leading-3 py-2 px-2 text-gray-800 border-b md:border-b-0">
+					<div className="grid grid-cols-3 text-center">
+						<div className="textShadow font-semibold">{first[ 0 ] || '*'}</div>
+						<div className=""></div>
+						<div className="textShadow  font-semibold">{last[ 0 ] || '*'}</div>
+					</div>
+					<div className="grid grid-cols-3 text-center items-center">
+						<div className="textShadow font-semibold">{first[ 1 ] || '*'}</div>
+						<div className="textShadow text-xl sm:text-3xl font-extrabold">{middle || '*'}</div>
+						<div className="textShadow font-semibold">{last[ 1 ] || '*'}</div>
+					</div>
+					<div className="grid grid-cols-3 text-center">
+						<div className="textShadow font-semibold">{first[ 2 ] || '*'}</div>
+						<div className=""></div>
+						<div className="textShadow font-semibold">{last[ 2 ] || '*'}</div>
+					</div>
+				</div>
+			) : (
+				<div className="text-md leading-3 py-2 px-2 text-gray-800 border-b md:border-b-0">
+					<div className="textShadow  font-semibold text-2xl md:text-4xl text-red-500">{result}</div>
+				</div>
+			)
+			}
+		</>
 	);
 };
 

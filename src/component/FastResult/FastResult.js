@@ -4,17 +4,17 @@ import { LuRefreshCw } from "react-icons/lu";
 import { BASE_URL } from '../../app.url';
 import toast from 'react-hot-toast';
 
-const ScheduleCard = ({ title, timeLabel, time, result, refresh }) => {
+const ScheduleCard = ({ title, result, refresh }) => {
 	const [ isRefreshing, setIsRefreshing ] = useState(false);
 
 	const handleRefresh = async () => {
-		// console.log(isRefreshing);
 		setIsRefreshing(true);
 		// await refresh();
 		// setIsRefreshing(false);
 		refresh((prev) => !prev);
 		setTimeout(() => setIsRefreshing(false), 1000);
 	};
+	// console.log(result);
 
 	return (
 		<div className="w-full max-w-4xl p-1 rounded-lg bg-gradient-to-br from-pink-500 to-orange-500 sm:relative overflow-hidden">
@@ -95,7 +95,6 @@ function LiveResult() {
 
 		fetchSchedules();
 	}, [ toggle ]);
-
 
 	return (
 		<div className="resultBg border my-8">
